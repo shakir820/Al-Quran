@@ -1,0 +1,91 @@
+﻿<Page
+    x:Class="Al_Quran.Pages.SuraListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Al_Quran.Pages"
+    xmlns:models="using:Al_Quran.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    
+    
+    
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary Source="ms-appx:///Style/DictionaryLight.xaml"
+                                    x:Key="Light" />
+                <ResourceDictionary Source="ms-appx:///Style/DictionaryDark.xaml"
+                                    x:Key="Dark" />
+            </ResourceDictionary.ThemeDictionaries>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Style/Style.xaml" />
+                <ResourceDictionary Source="ms-appx:///Style/ConverterDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+
+
+
+
+    <Grid Margin="0,20,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Sura List" FontSize="20"
+                   Foreground="#09A82E"
+                   FontWeight="SemiBold"
+                   Margin="20,0,0,0"/>
+
+        <ListView Grid.Row="1"
+                  Name="SuraListView"
+                  ItemsSource="{x:Bind QuranFunctionality.SuraCollection, Mode=OneWay}"
+                  Margin="0,20,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Surah_vm">
+                    <Grid CornerRadius="5"
+                          Padding="10,5,10,5"
+                          Background="#F6F6F6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{x:Bind EnglishName, Mode=OneWay}"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   Foreground="#09A82E"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Left"/>
+                        <TextBlock Text="{x:Bind Name, Mode=OneWay}"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   Foreground="#09A82E"
+                                   Grid.Column="1"
+                                   Grid.RowSpan="2"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right" />
+                        <TextBlock Text="{x:Bind EnglishNameTranslation, Mode=OneWay}"
+                                   FontSize="11"
+                                   Margin="0,10,0,0"
+                                   FontWeight="Normal"
+                                   Foreground="#BCBCBC"
+                                   Grid.Row="1"
+                                   VerticalAlignment="Bottom"
+                                   HorizontalAlignment="Left"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
