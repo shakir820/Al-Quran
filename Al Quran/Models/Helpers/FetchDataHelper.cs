@@ -47,7 +47,7 @@ namespace Al_Quran.Models.Helpers
 
             Juz.Edition = edition;
 
-            Juz.Ayahs
+           
 
             if(juz.Ayahs.Count > 0)
             {
@@ -58,12 +58,59 @@ namespace Al_Quran.Models.Helpers
                     Ayah.Juz = ayah.Juz;
                     Ayah.Manzil = ayah.Manzil;
                     Ayah.Number = ayah.Number;
-                    Ayah.NumberInSurah
-                    
+                    Ayah.NumberInSurah = ayah.NumberInSurah;
+                    Ayah.Page = ayah.Page;
+                    Ayah.Ruku = ayah.Ruku;
+                    if(ayah.Sajda.Bool != null)
+                    {
+                        Ayah.Sajda = new Sajda_vm();
+                        Ayah.Sajda.Sajda_Existed = false;
+                    }
+                    else
+                    {
+                        Ayah.Sajda = new Sajda_vm();
+                        if(ayah.Sajda.SajdaClass != null)
+                        {
+                            Ayah.Sajda.Id = ayah.Sajda.SajdaClass.Id;
+                            Ayah.Sajda.Obligatory = ayah.Sajda.SajdaClass.Obligatory;
+                            Ayah.Sajda.Recommended = ayah.Sajda.SajdaClass.Recommended;
+                        }
+                    }
+
+                    Ayah.Surah = new Surah_vm();
+                    Ayah.Surah.EnglishName = ayah.Surah.EnglishName;
+                    Ayah.Surah.EnglishNameTranslation = ayah.Surah.EnglishNameTranslation;
+                    Ayah.Surah.Name = ayah.Surah.Name;
+                    Ayah.Surah.Number = ayah.Surah.Number;
+                    Ayah.Surah.NumberOfAyahs = ayah.Surah.NumberOfAyahs;
+                    Ayah.Surah.RevelationType = ayah.Surah.RevelationType;
+                    Ayah.Text = ayah.Text;
+
+                    Juz.Ayahs.Add(Ayah);
                 }
+                
+            }
+
+            Juz.Number = juz.Number;
+            Juz.Surahs = new Dictionary<string, Surah_vm>();
+
+            foreach (var item in juz.Surahs)
+            {
+                var surah = new Surah_vm
+                {
+                    EnglishName = item.Value.EnglishName,
+                    EnglishNameTranslation = item.Value.EnglishNameTranslation,
+                    Name = item.Value.Name,
+                    Number = item.Value.Number,
+                    NumberOfAyahs = item.Value.NumberOfAyahs,
+                    RevelationType = item.Value.RevelationType
+                };
+
+                Juz.Surahs.Add(item.Key, surah);
             }
 
 
+            return Juz;
         }
     }
 }

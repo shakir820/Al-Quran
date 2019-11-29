@@ -48,10 +48,10 @@ namespace Al_Quran.Models
 
             Task.Run(async () =>
             {
-                var result = await AlQuranCloudServer.GetSuraListAsync();
+                var result = await AlQuranCloudServer.GetJuzAsync(30);
                 if (result != null)
                 {
-                    await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { SuraCollection = result; });
+                    //await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { SuraCollection = result; });
                 }
             });
         }

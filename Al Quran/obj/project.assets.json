@@ -18557,11 +18557,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Github\\Al Quran\\Al Quran\\Al Quran.csproj",
+      "projectUniqueName": "E:\\Github\\Al-Quran\\Al Quran\\Al Quran.csproj",
       "projectName": "Al Quran",
-      "projectPath": "E:\\Github\\Al Quran\\Al Quran\\Al Quran.csproj",
+      "projectPath": "E:\\Github\\Al-Quran\\Al Quran\\Al Quran.csproj",
       "packagesPath": "C:\\Users\\SHAKIR\\.nuget\\packages\\",
-      "outputPath": "E:\\Github\\Al Quran\\Al Quran\\obj\\",
+      "outputPath": "E:\\Github\\Al-Quran\\Al Quran\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

@@ -64,7 +64,7 @@ namespace Al_Quran.Models.CommunicationWithServer
 
 
 
-        public static async Task<Juz_vm> GetJuzsync(int number)
+        public static async Task<Juz_vm> GetJuzAsync(int number)
         {
             StringContent a = new StringContent("");
             string uri = $"http://api.alquran.cloud/v1/juz/{number}/en.asad";
