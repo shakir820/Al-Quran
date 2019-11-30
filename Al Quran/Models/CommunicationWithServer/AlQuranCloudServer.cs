@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Al_Quran.Models.CommunicationWithServer
@@ -14,11 +15,11 @@ namespace Al_Quran.Models.CommunicationWithServer
     public class AlQuranCloudServer
     {
 
-        public static async Task<ObservableCollection<Surah_vm>> GetSuraListAsync()
+        public static async Task<(ObservableCollection<Surah_vm> surahs, bool internetError)> GetSuraListAsync()
         {
             StringContent a = new StringContent("");
             string uri = "http://api.alquran.cloud/v1/surah";
-            
+
             if (CheckForInternetConnection())
             {
                 try
@@ -35,31 +36,34 @@ namespace Al_Quran.Models.CommunicationWithServer
                         {
                             if (quran.Surahs != null)
                             {
-                                return Helpers.FetchDataHelper.GetSuraList(quran.Surahs);
+                                var s = Helpers.FetchDataHelper.GetSuraList(quran.Surahs);
+                                return (s, false);
                             }
-                            else return null;
+                            else return (null, false);
                         }
                         else
                         {
-                            return null;
+                            return (null, false);
                         }
                     }
                     catch
                     {
-                        return null;
+                        return (null, false);
                     }
                 }
                 catch
                 {
                     //cannot communicate with server. It may have many reasons.
-                    return null;
+                    return (null, false);
                 }
             }
             else
             {
                 //ShowInternetErrorNotification();
-                return null;
+                return (null, true);
             }
+
+            return (null, true);
         }
 
 

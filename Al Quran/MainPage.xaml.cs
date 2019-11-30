@@ -177,7 +177,7 @@ namespace Al_Quran
             }
 
 
-            UnPressedBottomBtns();
+            //UnPressedBottomBtns();
         }
 
         //private void SettingGrid_PointerEntered(object sender, PointerRoutedEventArgs e)
@@ -245,7 +245,7 @@ namespace Al_Quran
             if (_mainMenuNavigationItem != null)
             {
                 _mainMenuNavigationItem.IsNavigated = false;
-                _mainMenuNavigationItem = null;
+                //_mainMenuNavigationItem = null;
             }
             NavigationListView.SelectedIndex = -1;
 
@@ -273,7 +273,7 @@ namespace Al_Quran
             if (_mainMenuNavigationItem != null)
             {
                 _mainMenuNavigationItem.IsNavigated = false;
-                _mainMenuNavigationItem = null;
+                //_mainMenuNavigationItem = null;
             }
             NavigationListView.SelectedIndex = -1;
 
@@ -329,7 +329,72 @@ namespace Al_Quran
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            if (frame.CanGoBack)
+            {
+                frame.GoBack();
+            }
+        }
 
+        private void frame_Navigated(object sender, NavigationEventArgs e)
+        {
+            if (frame.CanGoBack)
+            {
+                BackButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BackButton.Visibility = Visibility.Collapsed;
+            }
+
+
+            if(e.SourcePageType == typeof(SuraListPage))
+            {
+                if(_mainMenuNavigationItem != null)
+                {
+                    if(_mainMenuNavigationItem.Type != typeof(SuraListPage))
+                    {
+                        _mainMenuNavigationItem.IsNavigated = false;
+
+                        var navItem = NavigationItems.SingleOrDefault(a => a.Type == typeof(SuraListPage));
+                        if(navItem != null)
+                        {
+                            navItem.IsNavigated = true;
+                            _mainMenuNavigationItem = navItem;
+                        }
+                    }
+                }
+                UnPressedBottomBtns();
+            }
+            else if(e.SourcePageType == typeof(JuzListPage))
+            {
+                if (_mainMenuNavigationItem != null)
+                {
+                    if (_mainMenuNavigationItem.Type != typeof(JuzListPage))
+                    {
+                        _mainMenuNavigationItem.IsNavigated = false;
+
+                        var navItem = NavigationItems.SingleOrDefault(a => a.Type == typeof(JuzListPage));
+                        if (navItem != null)
+                        {
+                            navItem.IsNavigated = true;
+                            _mainMenuNavigationItem = navItem;
+                        }
+                    }
+                }
+
+                UnPressedBottomBtns();
+            }
+            else if(e.SourcePageType == typeof(AboutPage))
+            {
+                HightLightAboutButton();
+            }
+            else if(e.SourcePageType == typeof(SettingPage))
+            {
+                HightLightSettingButton();
+            }
+
+
+           
         }
     }
 }

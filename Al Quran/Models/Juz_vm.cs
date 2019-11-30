@@ -14,9 +14,26 @@ namespace Al_Quran.Models
         private List<Ayah_vm> _ayahs = new List<Ayah_vm>();
         private Dictionary<string, Surah_vm> _surahs = new Dictionary<string, Surah_vm>();
         private Edition_vm _edition { get; set; }
+        private string _arabicTitle;
+        private string _englishTitle;
 
 
 
+
+
+
+
+        public string ArabicTitle
+        {
+            get { return _arabicTitle; }
+            set { _arabicTitle = value; RaisePropertyChanged(); }
+        }
+
+        public string EnglishTitle
+        {
+            get { return _englishTitle; }
+            set { _englishTitle = value; RaisePropertyChanged(); }
+        }
 
         public long Number
         {

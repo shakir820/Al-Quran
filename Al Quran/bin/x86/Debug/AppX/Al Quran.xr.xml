@@ -10,6 +10,7 @@
       <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
       <RootEvent Name="Loaded" />
+      <RootEvent Name="Unloaded" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
@@ -30,6 +31,7 @@
       <RootProperty Name="Name" />
       <RootProperty Name="CornerRadius" />
       <RootProperty Name="Padding" />
+      <RootProperty Name="Visibility" />
       <RootEvent Name="PointerPressed" />
       <RootMethod Name="GetColumn" />
       <RootMethod Name="SetColumn" />
@@ -47,19 +49,26 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="ContentTransitions" />
+      <RootEvent Name="Navigated" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Button">
       <RootProperty Name="Name" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="BorderThickness" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="Content" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.FontIcon">
       <RootProperty Name="FontFamily" />
       <RootProperty Name="Glyph" />
-      <RootProperty Name="FontSize" />
       <RootProperty Name="Foreground" />
+      <RootProperty Name="FontSize" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="Text" />
@@ -131,6 +140,13 @@
     <RootType FullName="Al_Quran.Pages.AboutPage" />
     <RootType FullName="Al_Quran.Pages.JuzListPage" />
     <RootType FullName="Al_Quran.Pages.SettingPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
+      <RootProperty Name="Width" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="IsIndeterminate" />
+      <RootProperty Name="ShowPaused" />
+      <RootProperty Name="ShowError" />
+    </RootType>
     <RootType FullName="Al_Quran.Pages.SuraListPage" />
     <RootType FullName="Al_Quran.Converters.CurrNavigationItemFontSizeConverter" />
     <RootType FullName="Al_Quran.Converters.CurrNavigationItemFontWeightConverter" />

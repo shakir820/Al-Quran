@@ -18,9 +18,9 @@ namespace Al_Quran.Models
         public static QuranFunctionality Current;
 
         private ObservableCollection<Surah_vm> _suraCollection = new ObservableCollection<Surah_vm>();
-
+        private ObservableCollection<Juz_vm> _juzCollection = new ObservableCollection<Juz_vm>();
         private CoreDispatcher Dispatcher;
-
+        
 
 
 
@@ -29,31 +29,74 @@ namespace Al_Quran.Models
             get { return _suraCollection; }
             set { _suraCollection = value; RaisePropertyChanged(); }
         }
+        public ObservableCollection<Juz_vm> JuzCollection
+        {
+            get { return _juzCollection; }
+            set { _juzCollection = value; RaisePropertyChanged(); }
+        }
+
+        public bool IsSuraListPopulating { get; set; } = false;
+
+        public bool IsSuraListPopulated { get; set; } = false;
+
+
+
+        #region events
+        public event EventHandler<SuraListPopulatedEventArgs> SuraListPopulatedChanged;
+        #endregion
+
+
 
 
         public QuranFunctionality()
         {
             Current = this;
             Dispatcher = CoreApplication.GetCurrentView().Dispatcher;
-            
-            //Get data
-            Task.Run(async () =>
+           
+        //Get data
+            Task.Run(() =>
             {
-                var result = await AlQuranCloudServer.GetSuraListAsync();
-                if (result != null)
-                {
-                    await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { SuraCollection = result; });
-                }
+                FetchSuraListFromServer();
             });
 
-            Task.Run(async () =>
+            Task.Run(() =>{ PopulateJuzList(); });
+        }
+
+
+
+        public async void FetchSuraListFromServer()
+        {
+            IsSuraListPopulating = true;
+            var result = await AlQuranCloudServer.GetSuraListAsync();
+            if (result.surahs != null)
             {
-                var result = await AlQuranCloudServer.GetSuraListAsync();
-                if (result != null)
-                {
-                    await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { SuraCollection = result; });
-                }
-            });
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { SuraCollection = result.surahs; });
+            }
+            else if (result.internetError == true)
+            {
+                SuraListPopulatedChanged?.Invoke(this, new SuraListPopulatedEventArgs() { InternetError = true, SuraListPopulated = true });
+                IsSuraListPopulating = false;
+                IsSuraListPopulated = true;
+                return;
+            }
+            IsSuraListPopulating = false;
+            IsSuraListPopulated = true;
+            SuraListPopulatedChanged?.Invoke(this, new SuraListPopulatedEventArgs() { InternetError = false, SuraListPopulated = true });
+        }
+
+
+
+
+        private async void PopulateJuzList()
+        {
+            for (var i = 0; i < 30; i++)
+            {
+                var count = i + 1;
+                Juz_vm juz = new Juz_vm();
+                juz.EnglishTitle = $"Juz {count}";
+
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { JuzCollection.Add(juz); });
+            }
         }
 
 
@@ -68,5 +111,13 @@ namespace Al_Quran.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
+    }
+
+
+    public class SuraListPopulatedEventArgs: EventArgs
+    {
+        public bool InternetError = false;
+        public bool SuraListPopulated = false;
+
     }
 }

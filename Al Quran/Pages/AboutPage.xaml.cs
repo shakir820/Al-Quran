@@ -30,7 +30,7 @@ namespace Al_Quran.Pages
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            MainPage.Current.HightLightAboutButton();
+            //MainPage.Current.HightLightAboutButton();
         }
     }
 }
