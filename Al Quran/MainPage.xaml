@@ -34,7 +34,8 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid Background="#F6F6F6"
-              Width="200">
+              Width="250"
+              CornerRadius="0,10,10,0">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -45,7 +46,7 @@
            
 
             <ListView x:Name="NavigationListView"
-                      Margin="0,50,0,0"
+                      Margin="0,150,0,0"
                       Grid.Row="1"
                       HorizontalAlignment="Center"
                       SelectionChanged="NavigationListView_SelectionChanged"

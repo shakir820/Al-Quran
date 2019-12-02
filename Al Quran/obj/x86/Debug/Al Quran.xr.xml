@@ -24,12 +24,12 @@
       <RootProperty Name="Children" />
       <RootProperty Name="Background" />
       <RootProperty Name="Width" />
+      <RootProperty Name="CornerRadius" />
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Height" />
       <RootProperty Name="Name" />
-      <RootProperty Name="CornerRadius" />
       <RootProperty Name="Padding" />
       <RootProperty Name="Visibility" />
       <RootEvent Name="PointerPressed" />
@@ -140,6 +140,7 @@
     <RootType FullName="Al_Quran.Pages.AboutPage" />
     <RootType FullName="Al_Quran.Pages.JuzListPage" />
     <RootType FullName="Al_Quran.Pages.SettingPage" />
+    <RootType FullName="Al_Quran.Pages.SurahViewPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
       <RootProperty Name="Width" />
       <RootProperty Name="Foreground" />

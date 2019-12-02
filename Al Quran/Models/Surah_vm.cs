@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Al_Quran.Models.API_Data;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -16,10 +18,26 @@ namespace Al_Quran.Models
         private string _englishNameTranslation;
         private long _numberOfAyahs;
         private string _revelationType;
+        private ObservableCollection<Ayah_vm> _ayahs = new ObservableCollection<Ayah_vm>();
+        private Edition _edition;
 
 
 
 
+
+
+
+        public ObservableCollection<Ayah_vm> Ayahs
+        {
+            get { return _ayahs; }
+            set { _ayahs = value; RaisePropertyChanged(); }
+        }
+      
+        public Edition Edition
+        {
+            get { return _edition; }
+            set { _edition = value; RaisePropertyChanged(); }
+        }
 
         public long Number
         {

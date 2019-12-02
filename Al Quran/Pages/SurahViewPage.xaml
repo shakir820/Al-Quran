@@ -1,0 +1,91 @@
+﻿<Page
+    x:Class="Al_Quran.Pages.SurahViewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Al_Quran.Pages"
+    xmlns:models="using:Al_Quran.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary Source="ms-appx:///Style/DictionaryLight.xaml"
+                                    x:Key="Light" />
+                <ResourceDictionary Source="ms-appx:///Style/DictionaryDark.xaml"
+                                    x:Key="Dark" />
+            </ResourceDictionary.ThemeDictionaries>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Style/Style.xaml" />
+                <ResourceDictionary Source="ms-appx:///Style/ConverterDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+
+        </ResourceDictionary>
+    </Page.Resources>
+
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{x:Bind Title, Mode=OneWay}"
+                   FontSize="20"
+                   FontWeight="SemiBold"
+                   />
+
+        <ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Ayah_vm">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Ellipse Stroke="Black"
+                                     StrokeThickness="1"
+                                     Width="50"
+                                     Height="50" 
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"/>
+                            <Grid VerticalAlignment="Center"
+                                  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{x:Bind NumberInSurah, Mode=OneWay}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                <TextBlock Text=":"
+                                           Grid.Column="1"
+                                           Margin="5,0,5,0"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                                <TextBlock Text="{x:Bind Number, Mode=OneWay}"
+                                           Grid.Column="2"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+
+                        </Grid>
+
+                        <TextBlock 
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Grid.Column="1"
+                            Text="{x:Bind Text, Mode=OneWay}"/>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

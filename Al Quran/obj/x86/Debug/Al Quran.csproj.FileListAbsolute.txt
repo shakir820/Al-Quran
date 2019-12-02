@@ -152,3 +152,8 @@ E:\Github\Al-Quran\Al Quran\obj\x86\Debug\MultipleQualifiersPerDimensionFound.tx
 E:\Github\Al-Quran\Al Quran\obj\x86\Debug\ProjectArchitectures.txt
 E:\Github\Al-Quran\Al Quran\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885094160000000.json
 E:\Github\Al-Quran\Al Quran\obj\x86\Debug\Al Quran.csprojAssemblyReference.cache
+E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\SurahViewPage.xbf
+E:\Github\Al-Quran\Al Quran\obj\x86\Debug\Pages\SurahViewPage.g.i.cs
+E:\Github\Al-Quran\Al Quran\obj\x86\Debug\Pages\SurahViewPage.g.cs
+E:\Github\Al-Quran\Al Quran\obj\x86\Debug\Pages\SurahViewPage.xaml
+E:\Github\Al-Quran\Al Quran\obj\x86\Debug\Pages\SurahViewPage.xbf

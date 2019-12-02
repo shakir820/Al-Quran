@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="Models\API_Data\JuzData.cs" />
     <Compile Include="Models\API_Data\Quran.cs" />
+    <Compile Include="Models\API_Data\Surah.cs" />
     <Compile Include="Models\Ayah_vm.cs" />
     <Compile Include="Models\CommunicationWithServer\AlQuranCloudServer.cs" />
     <Compile Include="Models\Edition_vm.cs" />
@@ -142,6 +143,9 @@
     </Compile>
     <Compile Include="Pages\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SurahViewPage.xaml.cs">
+      <DependentUpon>SurahViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SuraListPage.xaml.cs">
       <DependentUpon>SuraListPage.xaml</DependentUpon>
@@ -181,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SurahViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
