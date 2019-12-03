@@ -23,7 +23,7 @@ namespace Al_Quran.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SurahViewPage : Page: INotifyPropertyChanged
+    public sealed partial class SurahViewPage : Page, INotifyPropertyChanged
     {
 
         private QuranFunctionality quranFunctionality;
@@ -46,8 +46,8 @@ namespace Al_Quran.Pages
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var data = e.Parameter;
-
+            var surah = (Surah_vm)e.Parameter;
+            surah.GetAyah();
         }
 
 

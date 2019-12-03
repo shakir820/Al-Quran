@@ -51,7 +51,8 @@
         <ListView x:ConnectionId='2' Grid.Row="1"
                   Name="SuraListView"
                                                                                        
-                  Margin="0,20,0,0">
+                  Margin="0,20,0,0"
+                                                                  >
             <ListView.ItemTemplate>
                 <DataTemplate                             >
                     <Grid x:ConnectionId='8' CornerRadius="5"

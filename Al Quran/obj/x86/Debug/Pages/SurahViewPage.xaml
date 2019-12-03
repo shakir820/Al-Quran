@@ -42,8 +42,8 @@
 
         <ListView>
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:Ayah_vm">
-                    <Grid>
+                <DataTemplate                            >
+                    <Grid x:ConnectionId='3'>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*" />
@@ -61,7 +61,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Text="{x:Bind NumberInSurah, Mode=OneWay}"
+                                <TextBlock x:ConnectionId='5'                                           
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center" />
                                 <TextBlock Text=":"
@@ -69,7 +69,7 @@
                                            Margin="5,0,5,0"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center" />
-                                <TextBlock Text="{x:Bind Number, Mode=OneWay}"
+                                <TextBlock x:ConnectionId='6'                                    
                                            Grid.Column="2"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center" />
@@ -77,11 +77,11 @@
 
                         </Grid>
 
-                        <TextBlock 
+                        <TextBlock x:ConnectionId='4' 
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
                             Grid.Column="1"
-                            Text="{x:Bind Text, Mode=OneWay}"/>
+                                                             />
 
                     </Grid>
                 </DataTemplate>
@@ -89,3 +89,4 @@
         </ListView>
     </Grid>
 </Page>
+

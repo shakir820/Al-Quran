@@ -110,5 +110,61 @@ namespace Al_Quran.Models.Helpers
 
             return Juz;
         }
+
+
+
+        public static Surah_vm GetSurah(Surah surah)
+        {
+            var Surah = new Surah_vm();
+
+            if(surah.Ayahs != null)
+            {
+                if(surah.Ayahs.Count > 0)
+                {
+                    foreach(var ayah_item in surah.Ayahs)
+                    {
+                        var Ayah = new Ayah_vm();
+                        Ayah.HizbQuarter = ayah_item.HizbQuarter;
+                        Ayah.Juz = ayah_item.Juz;
+                        Ayah.Manzil = ayah_item.Manzil;
+                        Ayah.Number = ayah_item.Number;
+                        Ayah.NumberInSurah = ayah_item.NumberInSurah;
+                        Ayah.Page = ayah_item.Page;
+                        Ayah.Ruku = ayah_item.Ruku;
+                        Ayah.Sajda = new Sajda_vm();
+                        if(ayah_item.Sajda.Bool != null)
+                        {
+                            Ayah.Sajda.Sajda_Existed = false;
+                        }
+                        else
+                        {
+                            Ayah.Sajda.Id = ayah_item.Sajda.SajdaClass.Id;
+                            Ayah.Sajda.Obligatory = ayah_item.Sajda.SajdaClass.Obligatory;
+                            Ayah.Sajda.Recommended = ayah_item.Sajda.SajdaClass.Recommended;
+                        }
+
+                        Ayah.Surah = Surah;
+                        Ayah.Text = ayah_item.Text;
+                        Surah.Ayahs.Add(Ayah);
+                    }
+                }
+            }
+
+            Surah.Edition = new Edition_vm();
+            Surah.Edition.EnglishName = surah.Edition.EnglishName;
+            Surah.Edition.Format = surah.Edition.Format;
+            Surah.Edition.Identifier = surah.Edition.Identifier;
+            Surah.Edition.Language = surah.Edition.Language;
+            Surah.Edition.Name = surah.Edition.Name;
+            Surah.Edition.Type = surah.Edition.Type;
+            Surah.EnglishName = surah.EnglishName;
+            Surah.EnglishNameTranslation = surah.EnglishNameTranslation;
+            Surah.Name = surah.Name;
+            Surah.Number = surah.Number;
+            Surah.NumberOfAyahs = surah.NumberOfAyahs;
+            Surah.RevelationType = surah.RevelationType;
+
+            return Surah;
+        }
     }
 }

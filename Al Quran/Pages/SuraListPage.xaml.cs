@@ -120,5 +120,11 @@ namespace Al_Quran.Pages
         {
             QuranFunctionality.SuraListPopulatedChanged -= QuranFunctionality_SuraListPopulated;
         }
+
+        private void SuraListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var surah = (Surah_vm)SuraListView.SelectedItem;
+            Frame.Navigate(typeof(SurahViewPage), surah);
+        }
     }
 }

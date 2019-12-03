@@ -1,4 +1,5 @@
 ﻿using Al_Quran.Models.API_Data;
+using Al_Quran.Models.CommunicationWithServer;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,7 @@ namespace Al_Quran.Models
         private long _numberOfAyahs;
         private string _revelationType;
         private ObservableCollection<Ayah_vm> _ayahs = new ObservableCollection<Ayah_vm>();
-        private Edition _edition;
+        private Edition_vm _edition;
 
 
 
@@ -33,7 +34,7 @@ namespace Al_Quran.Models
             set { _ayahs = value; RaisePropertyChanged(); }
         }
       
-        public Edition Edition
+        public Edition_vm Edition
         {
             get { return _edition; }
             set { _edition = value; RaisePropertyChanged(); }
@@ -69,6 +70,21 @@ namespace Al_Quran.Models
             get { return _revelationType; }
             set { _revelationType = value; RaisePropertyChanged(); }
         }
+
+
+
+
+        public async void GetAyah()
+        {
+
+            var result = await AlQuranCloudServer.GetSurah((int)Number);
+        }
+
+
+
+
+
+
 
 
         public event PropertyChangedEventHandler PropertyChanged;

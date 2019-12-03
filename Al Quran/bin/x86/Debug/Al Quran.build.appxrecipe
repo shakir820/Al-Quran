@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>SHAKIR-PC</Machine>
+    <Machine>DESKTOP-3OO06UG</Machine>
     <WindowsUser>SHAKIR</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -10,22 +10,22 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>5e57d6d6-932b-47c5-8427-0adda661c189</PackageIdentityName>
     <PackageIdentityPublisher>CN=SHAKIR</PackageIdentityPublisher>
-    <IntermediateOutputPath>E:\Github\Al-Quran\Al Quran\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>D:\GitHub\Al-Quran\Al Quran\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>E:\Github\Al-Quran\Al Quran\bin\x86\Debug\AppX</LayoutDir>
+    <LayoutDir>D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Al Quran.exe">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\Al Quran.exe">
       <PackagePath>entrypoint\Al Quran.exe</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\SHAKIR\.nuget\packages\newtonsoft.json\12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll">
@@ -37,79 +37,79 @@
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.18362.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Al Quran.xr.xml">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\Al Quran.xr.xml">
       <PackagePath>Al Quran.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\AboutPage.xbf">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\Pages\AboutPage.xbf">
       <PackagePath>Pages\AboutPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\JuzListPage.xbf">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\Pages\JuzListPage.xbf">
       <PackagePath>Pages\JuzListPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\SettingPage.xbf">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\Pages\SettingPage.xbf">
       <PackagePath>Pages\SettingPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\SurahViewPage.xbf">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\Pages\SurahViewPage.xbf">
       <PackagePath>Pages\SurahViewPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\SuraListPage.xbf">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\Pages\SuraListPage.xbf">
       <PackagePath>Pages\SuraListPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Style\ConverterDictionary.xbf">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\Style\ConverterDictionary.xbf">
       <PackagePath>Style\ConverterDictionary.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Style\DictionaryDark.xbf">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\Style\DictionaryDark.xbf">
       <PackagePath>Style\DictionaryDark.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Style\DictionaryLight.xbf">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\Style\DictionaryLight.xbf">
       <PackagePath>Style\DictionaryLight.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Style\Style.xbf">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\Style\Style.xbf">
       <PackagePath>Style\Style.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Core\Al Quran.exe">
+    <AppxPackagedFile Include="D:\GitHub\Al-Quran\Al Quran\bin\x86\Debug\Core\Al Quran.exe">
       <PackagePath>Al Quran.exe</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

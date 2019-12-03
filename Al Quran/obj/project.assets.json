@@ -11442,12 +11442,11 @@
       ]
     },
     "NETStandard.Library/2.0.3": {
-      "sha512": "548M6mnBSJWxsIlkQHfbzoYxpiYFXZZSL00p4GHYv8PkiqFBnnT68mW5mGEsA/ch9fDO9GkPgkFQpWiXZN7mAQ==",
+      "sha512": "4jPAto1yksD9Oztl8aSFqu4yN63/+q5rxKbd8Byz/o2VRZ30HkMYqFQftERWqhWhFNe38EVOTYJx4qtFcnOVkQ==",
       "type": "package",
       "path": "netstandard.library/2.0.3",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "build/netstandard2.0/NETStandard.Library.targets",
@@ -18551,27 +18550,24 @@
   },
   "packageFolders": {
     "C:\\Users\\SHAKIR\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Github\\Al-Quran\\Al Quran\\Al Quran.csproj",
+      "projectUniqueName": "D:\\GitHub\\Al-Quran\\Al Quran\\Al Quran.csproj",
       "projectName": "Al Quran",
-      "projectPath": "E:\\Github\\Al-Quran\\Al Quran\\Al Quran.csproj",
+      "projectPath": "D:\\GitHub\\Al-Quran\\Al Quran\\Al Quran.csproj",
       "packagesPath": "C:\\Users\\SHAKIR\\.nuget\\packages\\",
-      "outputPath": "E:\\Github\\Al-Quran\\Al Quran\\obj\\",
+      "outputPath": "D:\\GitHub\\Al-Quran\\Al Quran\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
         "C:\\Users\\SHAKIR\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "uap10.0.18362"

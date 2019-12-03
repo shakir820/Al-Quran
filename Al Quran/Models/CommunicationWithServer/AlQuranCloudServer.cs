@@ -63,7 +63,7 @@ namespace Al_Quran.Models.CommunicationWithServer
                 return (null, true);
             }
 
-            return (null, true);
+            
         }
 
 
@@ -115,6 +115,60 @@ namespace Al_Quran.Models.CommunicationWithServer
                 return null;
             }
         }
+
+
+
+
+
+        public static async Task<(Surah_vm surah, bool internetError)> GetSurah(int surah_num)
+        {
+            
+            string uri = $"http://api.alquran.cloud/v1/surah/{surah_num}";
+
+            if (CheckForInternetConnection())
+            {
+                try
+                {
+                    HttpResponseMessage response = await App.client.GetAsync(uri);
+                    try
+                    {
+                        response.EnsureSuccessStatusCode();
+                        // now serialize data
+                        var stringContent = await response.Content.ReadAsStringAsync();
+                        var quranSurah = QuranSurah.FromJson(stringContent);
+
+                        if (quranSurah.Status == "OK")
+                        {
+                            if (quranSurah.Data != null)
+                            {
+                                var Surah = Helpers.FetchDataHelper.GetSurah(quranSurah.Data);
+                                return (Surah, false);
+                            }
+                            else return (null, false);
+                        }
+                        else
+                        {
+                            return (null, false);
+                        }
+                    }
+                    catch
+                    {
+                        return (null, false);
+                    }
+                }
+                catch
+                {
+                    //cannot communicate with server. It may have many reasons.
+                    return (null, false);
+                }
+            }
+            else
+            {
+                //ShowInternetErrorNotification();
+                return (null, true);
+            }
+        }
+
 
 
 

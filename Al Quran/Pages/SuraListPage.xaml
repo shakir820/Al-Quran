@@ -51,7 +51,8 @@
         <ListView Grid.Row="1"
                   Name="SuraListView"
                   ItemsSource="{x:Bind QuranFunctionality.SuraCollection, Mode=OneWay}"
-                  Margin="0,20,0,0">
+                  Margin="0,20,0,0"
+                  SelectionChanged="SuraListView_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Surah_vm">
                     <Grid CornerRadius="5"
