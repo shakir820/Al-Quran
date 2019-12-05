@@ -9,14 +9,19 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
 
 namespace Al_Quran.Models.CommunicationWithServer
 {
     public class AlQuranCloudServer
     {
+        public event EventHandler InternetError;
+        public event EventHandler SurahPopulated;
 
-        public static async Task<(ObservableCollection<Surah_vm> surahs, bool internetError)> GetSuraListAsync()
+        public  async Task<(ObservableCollection<Surah_vm> surahs, bool internetError)> GetSuraListAsync()
         {
+            
+
             StringContent a = new StringContent("");
             string uri = "http://api.alquran.cloud/v1/surah";
 
@@ -60,6 +65,7 @@ namespace Al_Quran.Models.CommunicationWithServer
             else
             {
                 //ShowInternetErrorNotification();
+                InternetError?.Invoke(this, new EventArgs());
                 return (null, true);
             }
 
@@ -68,7 +74,7 @@ namespace Al_Quran.Models.CommunicationWithServer
 
 
 
-        public static async Task<Juz_vm> GetJuzsync(int number)
+        public  async Task<Juz_vm> GetJuzsync(int number)
         {
             StringContent a = new StringContent("");
             string uri = $"http://api.alquran.cloud/v1/juz/{number}/en.asad";
@@ -112,15 +118,16 @@ namespace Al_Quran.Models.CommunicationWithServer
             else
             {
                 //ShowInternetErrorNotification();
+                InternetError?.Invoke(this, new EventArgs());
                 return null;
             }
         }
 
 
+          
 
 
-
-        public static async Task<(Surah_vm surah, bool internetError)> GetSurah(int surah_num)
+        public  async Task<bool> GetSurah(int surah_num, Surah_vm param_surah)
         {
             
             string uri = $"http://api.alquran.cloud/v1/surah/{surah_num}";
@@ -141,31 +148,38 @@ namespace Al_Quran.Models.CommunicationWithServer
                         {
                             if (quranSurah.Data != null)
                             {
-                                var Surah = Helpers.FetchDataHelper.GetSurah(quranSurah.Data);
-                                return (Surah, false);
+
+                                await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                                {
+                                    Helpers.FetchDataHelper.GetSurah(quranSurah.Data, param_surah);
+                                });
+                                SurahPopulated?.Invoke(this, new EventArgs());
+                                return (false);
+
                             }
-                            else return (null, false);
+                            else return (false);
                         }
                         else
                         {
-                            return (null, false);
+                            return (false);
                         }
                     }
-                    catch
+                    catch(Exception ex)
                     {
-                        return (null, false);
+                        return (false);
                     }
                 }
                 catch
                 {
                     //cannot communicate with server. It may have many reasons.
-                    return (null, false);
+                    return (false);
                 }
             }
             else
             {
                 //ShowInternetErrorNotification();
-                return (null, true);
+                InternetError?.Invoke(this, new EventArgs());
+                return (true);
             }
         }
 
@@ -173,7 +187,7 @@ namespace Al_Quran.Models.CommunicationWithServer
 
 
 
-        public static bool CheckForInternetConnection()
+        public  bool CheckForInternetConnection()
         {
             try
             {

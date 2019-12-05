@@ -10,6 +10,7 @@ namespace Al_Quran.Models.Helpers
 {
     public class FetchDataHelper
     {
+
         public static ObservableCollection<Surah_vm> GetSuraList(List<Surah> suraList)
         {
             ObservableCollection<Surah_vm> suraCollection = new ObservableCollection<Surah_vm>();
@@ -113,10 +114,9 @@ namespace Al_Quran.Models.Helpers
 
 
 
-        public static Surah_vm GetSurah(Surah surah)
+        public static void GetSurah(Surah surah, Surah_vm Surah)
         {
-            var Surah = new Surah_vm();
-
+            
             if(surah.Ayahs != null)
             {
                 if(surah.Ayahs.Count > 0)
@@ -164,7 +164,7 @@ namespace Al_Quran.Models.Helpers
             Surah.NumberOfAyahs = surah.NumberOfAyahs;
             Surah.RevelationType = surah.RevelationType;
 
-            return Surah;
+            //return Surah;
         }
     }
 }

@@ -78,6 +78,9 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="LineHeight" />
+      <RootProperty Name="LineStackingStrategy" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Media.Animation.TransitionCollection" />
     <RootType FullName="Windows.UI.Xaml.Media.Animation.NavigationThemeTransition" />
@@ -140,6 +143,13 @@
     <RootType FullName="Al_Quran.Pages.AboutPage" />
     <RootType FullName="Al_Quran.Pages.JuzListPage" />
     <RootType FullName="Al_Quran.Pages.SettingPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
+      <RootProperty Name="Width" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="IsIndeterminate" />
+      <RootProperty Name="ShowPaused" />
+      <RootProperty Name="ShowError" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Ellipse">
       <RootProperty Name="Stroke" />
       <RootProperty Name="StrokeThickness" />
@@ -149,13 +159,6 @@
       <RootProperty Name="HorizontalAlignment" />
     </RootType>
     <RootType FullName="Al_Quran.Pages.SurahViewPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
-      <RootProperty Name="Width" />
-      <RootProperty Name="Foreground" />
-      <RootProperty Name="IsIndeterminate" />
-      <RootProperty Name="ShowPaused" />
-      <RootProperty Name="ShowError" />
-    </RootType>
     <RootType FullName="Al_Quran.Pages.SuraListPage" />
     <RootType FullName="Al_Quran.Converters.CurrNavigationItemFontSizeConverter" />
     <RootType FullName="Al_Quran.Converters.CurrNavigationItemFontWeightConverter" />

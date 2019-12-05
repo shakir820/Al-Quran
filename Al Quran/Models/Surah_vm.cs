@@ -74,10 +74,9 @@ namespace Al_Quran.Models
 
 
 
-        public async void GetAyah()
+        public  void GetAyah()
         {
-
-            var result = await AlQuranCloudServer.GetSurah((int)Number);
+             Task.Run(async () => { var result = await App.AlQuranCloudServer.GetSurah((int)Number, this); });
         }
 
 

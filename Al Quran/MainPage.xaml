@@ -35,7 +35,7 @@
         </Grid.ColumnDefinitions>
         <Grid Background="#F6F6F6"
               Width="220"
-              CornerRadius="0,10,10,0">
+              CornerRadius="0">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

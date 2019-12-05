@@ -67,7 +67,7 @@ namespace Al_Quran.Models
         public async void FetchSuraListFromServer()
         {
             IsSuraListPopulating = true;
-            var result = await AlQuranCloudServer.GetSuraListAsync();
+            var result = await App.AlQuranCloudServer.GetSuraListAsync();
             if (result.surahs != null)
             {
                 await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { SuraCollection = result.surahs; });

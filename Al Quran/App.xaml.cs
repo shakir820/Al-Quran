@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Al_Quran.Models.CommunicationWithServer;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace Al_Quran
     {
 
         public static HttpClient client = new HttpClient();
-
+        public static AlQuranCloudServer AlQuranCloudServer = new AlQuranCloudServer();
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
