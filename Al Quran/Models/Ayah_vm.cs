@@ -13,6 +13,7 @@ namespace Al_Quran.Models
 
         private long _number;
         private string _text;
+        private string _translationText;
         private Surah_vm _surah;
         private long _numberInSurah;
         private long _juz;
@@ -33,6 +34,13 @@ namespace Al_Quran.Models
             get { return _text; }
             set { _text = value; RaisePropertyChanged(); }
         }
+
+        public string TranslationText
+        {
+            get { return _translationText; }
+            set { _translationText = value; RaisePropertyChanged(); }
+        }
+
         public Surah_vm Surah
         {
             get { return _surah; }

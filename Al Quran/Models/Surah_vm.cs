@@ -80,7 +80,10 @@ namespace Al_Quran.Models
         }
 
 
-
+        public void GetAyahTextTranslation(string identifier = "en.asad")
+        {
+            Task.Run(async () => { var result = await App.AlQuranCloudServer.GetSurahTextTranslation((int)Number, this, identifier); });
+        }
 
 
 

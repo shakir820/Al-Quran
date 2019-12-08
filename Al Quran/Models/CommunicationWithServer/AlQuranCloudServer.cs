@@ -17,11 +17,11 @@ namespace Al_Quran.Models.CommunicationWithServer
     {
         public event EventHandler InternetError;
         public event EventHandler SurahPopulated;
+        public event EventHandler SurahTextTranslationFetched;
+
 
         public  async Task<(ObservableCollection<Surah_vm> surahs, bool internetError)> GetSuraListAsync()
         {
-            
-
             StringContent a = new StringContent("");
             string uri = "http://api.alquran.cloud/v1/surah";
 
@@ -68,8 +68,6 @@ namespace Al_Quran.Models.CommunicationWithServer
                 InternetError?.Invoke(this, new EventArgs());
                 return (null, true);
             }
-
-            
         }
 
 
@@ -182,6 +180,68 @@ namespace Al_Quran.Models.CommunicationWithServer
                 return (true);
             }
         }
+
+
+
+
+
+
+        public async Task<bool> GetSurahTextTranslation(int surah_num, Surah_vm param_surah, string identifier = "en.asad")
+        {
+
+            string uri = $"http://api.alquran.cloud/v1/surah/{surah_num}/{identifier}";
+
+            if (CheckForInternetConnection())
+            {
+                try
+                {
+                    HttpResponseMessage response = await App.client.GetAsync(uri);
+                    try
+                    {
+                        response.EnsureSuccessStatusCode();
+                        // now serialize data
+                        var stringContent = await response.Content.ReadAsStringAsync();
+                        var quranSurah = QuranSurah.FromJson(stringContent);
+
+                        if (quranSurah.Status == "OK")
+                        {
+                            if (quranSurah.Data != null)
+                            {
+
+                                await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                                {
+                                    Helpers.FetchDataHelper.GetSurahTextTranslation(quranSurah.Data, param_surah);
+                                });
+                                SurahTextTranslationFetched?.Invoke(this, new EventArgs());
+                                return (false);
+
+                            }
+                            else return (false);
+                        }
+                        else
+                        {
+                            return (false);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        return (false);
+                    }
+                }
+                catch
+                {
+                    //cannot communicate with server. It may have many reasons.
+                    return (false);
+                }
+            }
+            else
+            {
+                //ShowInternetErrorNotification();
+                InternetError?.Invoke(this, new EventArgs());
+                return (true);
+            }
+        }
+
 
 
 

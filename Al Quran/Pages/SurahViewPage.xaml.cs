@@ -56,7 +56,8 @@ namespace Al_Quran.Pages
                 AyahListView.Visibility = Visibility.Visible;
                 NoInternetGrid.Visibility = Visibility.Collapsed;
             });
-            
+
+            Surah.GetAyahTextTranslation();
         }
 
         private async void AlQuranCloudServer_InternetError(object sender, EventArgs e)
@@ -75,6 +76,7 @@ namespace Al_Quran.Pages
             var surah = (Surah_vm)e.Parameter;
             surah.GetAyah();
             Surah = surah;
+            
         }
 
 

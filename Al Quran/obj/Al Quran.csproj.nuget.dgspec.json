@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\Al-Quran\\Al Quran\\Al Quran.csproj": {}
+    "E:\\Github\\Al-Quran\\Al Quran\\Al Quran.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\Al-Quran\\Al Quran\\Al Quran.csproj": {
+    "E:\\Github\\Al-Quran\\Al Quran\\Al Quran.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\Al-Quran\\Al Quran\\Al Quran.csproj",
+        "projectUniqueName": "E:\\Github\\Al-Quran\\Al Quran\\Al Quran.csproj",
         "projectName": "Al Quran",
-        "projectPath": "D:\\GitHub\\Al-Quran\\Al Quran\\Al Quran.csproj",
+        "projectPath": "E:\\Github\\Al-Quran\\Al Quran\\Al Quran.csproj",
         "packagesPath": "C:\\Users\\SHAKIR\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\Al-Quran\\Al Quran\\obj\\",
+        "outputPath": "E:\\Github\\Al-Quran\\Al Quran\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
         ],
         "configFilePaths": [
           "C:\\Users\\SHAKIR\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "uap10.0.18362"

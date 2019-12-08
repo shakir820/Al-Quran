@@ -166,5 +166,55 @@ namespace Al_Quran.Models.Helpers
 
             //return Surah;
         }
+
+
+        public static void GetSurahTextTranslation(Surah surah, Surah_vm Surah)
+        {
+
+            if (surah.Ayahs != null)
+            {
+                if (surah.Ayahs.Count > 0)
+                {
+                    //int index = 1;
+
+                    for(var i = 0; i < Surah.Ayahs.Count; i++)
+                    {
+                        Surah.Ayahs[i].TranslationText = surah.Ayahs[i].Text;
+                    }
+
+                    //foreach (var ayah_item in surah.Ayahs)
+                    //{
+                    //    var Ayah = new Ayah_vm();
+                    //    Ayah.HizbQuarter = ayah_item.HizbQuarter;
+                    //    Ayah.Juz = ayah_item.Juz;
+                    //    Ayah.Manzil = ayah_item.Manzil;
+                    //    Ayah.Number = ayah_item.Number;
+                    //    Ayah.NumberInSurah = ayah_item.NumberInSurah;
+                    //    Ayah.Page = ayah_item.Page;
+                    //    Ayah.Ruku = ayah_item.Ruku;
+                    //    Ayah.Sajda = new Sajda_vm();
+                    //    if (ayah_item.Sajda.Bool != null)
+                    //    {
+                    //        Ayah.Sajda.Sajda_Existed = false;
+                    //    }
+                    //    else
+                    //    {
+                    //        Ayah.Sajda.Id = ayah_item.Sajda.SajdaClass.Id;
+                    //        Ayah.Sajda.Obligatory = ayah_item.Sajda.SajdaClass.Obligatory;
+                    //        Ayah.Sajda.Recommended = ayah_item.Sajda.SajdaClass.Recommended;
+                    //    }
+
+                    //    Ayah.Surah = Surah;
+                    //    Ayah.Text = ayah_item.Text;
+                    //    Surah.Ayahs.Insert(index, Ayah);
+                    //    index = index + 2;
+                    //}
+                }
+            }
+
+            
+
+            //return Surah;
+        }
     }
 }

@@ -44,14 +44,18 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Ayah_vm">
                     <Grid CornerRadius="5"
-                          Padding="10,10,10,10"
+                          Padding="10"
                           Margin="0"
                           Background="#F6F6F6">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.RowSpan="2">
                             <Ellipse Stroke="#09A82E"
                                      StrokeThickness="1"
                                      Width="30"
@@ -88,7 +92,7 @@
                         </Grid>
 
                         <TextBlock FontWeight="SemiBold"
-                                   Foreground="#09A82E"
+                                   Foreground="#148C5A"
                                    TextWrapping="Wrap"
                                    
                                    HorizontalAlignment="Right"
@@ -98,6 +102,17 @@
                                    Text="{x:Bind Text, Mode=OneWay}" 
                                    LineHeight="35"
                                    LineStackingStrategy="BlockLineHeight"/>
+
+                        <TextBlock FontWeight="Normal"
+                                   Foreground="Gray"
+                                   TextWrapping="Wrap"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Grid.Column="1"
+                                   Grid.Row="1"
+                                   FontSize="13"
+                                   Text="{x:Bind TranslationText, Mode=OneWay}"
+                                    />
 
                     </Grid>
                 </DataTemplate>
