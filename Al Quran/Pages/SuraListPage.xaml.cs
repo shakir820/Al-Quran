@@ -80,6 +80,7 @@ namespace Al_Quran.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            MainPage.Current.HighlightMenuItem(typeof(SuraListPage));
             QuranFunctionality.SuraListPopulatedChanged += QuranFunctionality_SuraListPopulated;
 
             if (QuranFunctionality.IsSuraListPopulated)

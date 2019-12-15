@@ -74,9 +74,12 @@ namespace Al_Quran.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             var surah = (Surah_vm)e.Parameter;
-            surah.GetAyah();
+            if(surah.Ayahs.Count == 0)
+            {
+                surah.GetAyah();
+            }
+
             Surah = surah;
-            
         }
 
 
@@ -92,7 +95,8 @@ namespace Al_Quran.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if(Surah.Ayahs.Count == 0)
+            MainPage.Current.HighlightMenuItem(typeof(SurahViewPage));
+            if (Surah.Ayahs.Count == 0)
             {
                 LoadingGrid.Visibility = Visibility.Visible;
                 AyahListView.Visibility = Visibility.Collapsed;
@@ -104,7 +108,6 @@ namespace Al_Quran.Pages
                 AyahListView.Visibility = Visibility.Visible;
                 NoInternetGrid.Visibility = Visibility.Collapsed;
             }
-
         }
 
         private void TryAgianBtn_Click(object sender, RoutedEventArgs e)

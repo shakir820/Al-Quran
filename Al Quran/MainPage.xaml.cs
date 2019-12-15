@@ -55,7 +55,7 @@ namespace Al_Quran
             QuranFunctionality = new QuranFunctionality();
 
 
-            NavigationItems.Add(new NavigationItem { Name = "Sura", IsNavigated = false, Type = typeof(SuraListPage) }); //Sura
+            NavigationItems.Add(new NavigationItem { Name = "Surah", IsNavigated = false, Type = typeof(SuraListPage) }); //Sura
             NavigationItems.Add(new NavigationItem { Name = "Juz", IsNavigated = false, Type = typeof(JuzListPage) }); //Juz
 
 
@@ -70,10 +70,7 @@ namespace Al_Quran
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-            //populate navigation items
             NavigationListView.SelectedIndex = 0;
-            
-            //frame.Navigated += Frame_Navigated;
 
         }
 
@@ -153,14 +150,14 @@ namespace Al_Quran
                 return;
             }
 
-            if (_mainMenuNavigationItem != null)
-            {
-                _mainMenuNavigationItem.IsNavigated = false;
-            }
+            //if (_mainMenuNavigationItem != null)
+            //{
+            //    _mainMenuNavigationItem.IsNavigated = false;
+            //}
 
-            var item = (NavigationItem)NavigationListView.SelectedItem;
-            item.IsNavigated = true;
-            _mainMenuNavigationItem = item;
+            //var item = (NavigationItem)NavigationListView.SelectedItem;
+            //item.IsNavigated = true;
+            //_mainMenuNavigationItem = item;
 
             switch (NavigationListView.SelectedIndex)
             {
@@ -177,7 +174,50 @@ namespace Al_Quran
             }
 
 
-            //UnPressedBottomBtns();
+           // UnPressedBottomBtns();
+        }
+
+
+
+        public void HighlightMenuItem(Type sourcePageType)
+        {
+            if(_mainMenuNavigationItem != null)
+            {
+                _mainMenuNavigationItem.IsNavigated = false;
+            }
+
+            if(sourcePageType == typeof(SurahViewPage))
+            {
+                var item = NavigationItems.SingleOrDefault(a => a.Type == typeof(SuraListPage));
+                
+                if(item != null)
+                {
+                    _mainMenuNavigationItem = item;
+                    item.IsNavigated = true;
+                }
+            }
+            else if(sourcePageType == typeof(SuraListPage))
+            {
+                var item = NavigationItems.SingleOrDefault(a => a.Type == typeof(SuraListPage));
+
+                if (item != null)
+                {
+                    _mainMenuNavigationItem = item;
+                    item.IsNavigated = true;
+                }
+            }
+            else if (sourcePageType == typeof(JuzListPage))
+            {
+                var item = NavigationItems.SingleOrDefault(a => a.Type == typeof(JuzListPage));
+
+                if (item != null)
+                {
+                    _mainMenuNavigationItem = item;
+                    item.IsNavigated = true;
+                }
+            }
+
+            UnPressedBottomBtns();
         }
 
         //private void SettingGrid_PointerEntered(object sender, PointerRoutedEventArgs e)
@@ -249,12 +289,12 @@ namespace Al_Quran
             }
             NavigationListView.SelectedIndex = -1;
 
-            grid = (Grid)SettingGrid;
-            TextBlockchild = (TextBlock)VisualTreeHelper.GetChild(grid, 1);
-            FontIconchild = (FontIcon)VisualTreeHelper.GetChild(grid, 0);
+            //grid = (Grid)SettingGrid;
+            //TextBlockchild = (TextBlock)VisualTreeHelper.GetChild(grid, 1);
+            //FontIconchild = (FontIcon)VisualTreeHelper.GetChild(grid, 0);
 
-            FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
-            TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
+            //FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
+            //TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
         }
 
 
@@ -289,7 +329,6 @@ namespace Al_Quran
         private void AboutGrid_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
            
-
             frame.Navigate(typeof(AboutPage));
         }
 
@@ -308,10 +347,10 @@ namespace Al_Quran
             FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
             TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
             //settings btn
-            TextBlockchild = (TextBlock)VisualTreeHelper.GetChild(SettingGrid, 1);
-            FontIconchild = (FontIcon)VisualTreeHelper.GetChild(SettingGrid, 0);
-            FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
-            TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
+            //TextBlockchild = (TextBlock)VisualTreeHelper.GetChild(SettingGrid, 1);
+            //FontIconchild = (FontIcon)VisualTreeHelper.GetChild(SettingGrid, 0);
+            //FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
+            //TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
         }
         #endregion
 
@@ -345,55 +384,6 @@ namespace Al_Quran
             {
                 BackButton.Visibility = Visibility.Collapsed;
             }
-
-
-            if(e.SourcePageType == typeof(SuraListPage))
-            {
-                if(_mainMenuNavigationItem != null)
-                {
-                    if(_mainMenuNavigationItem.Type != typeof(SuraListPage))
-                    {
-                        _mainMenuNavigationItem.IsNavigated = false;
-
-                        var navItem = NavigationItems.SingleOrDefault(a => a.Type == typeof(SuraListPage));
-                        if(navItem != null)
-                        {
-                            navItem.IsNavigated = true;
-                            _mainMenuNavigationItem = navItem;
-                        }
-                    }
-                }
-                UnPressedBottomBtns();
-            }
-            else if(e.SourcePageType == typeof(JuzListPage))
-            {
-                if (_mainMenuNavigationItem != null)
-                {
-                    if (_mainMenuNavigationItem.Type != typeof(JuzListPage))
-                    {
-                        _mainMenuNavigationItem.IsNavigated = false;
-
-                        var navItem = NavigationItems.SingleOrDefault(a => a.Type == typeof(JuzListPage));
-                        if (navItem != null)
-                        {
-                            navItem.IsNavigated = true;
-                            _mainMenuNavigationItem = navItem;
-                        }
-                    }
-                }
-
-                UnPressedBottomBtns();
-            }
-            else if(e.SourcePageType == typeof(AboutPage))
-            {
-                HightLightAboutButton();
-            }
-            else if(e.SourcePageType == typeof(SettingPage))
-            {
-                HightLightSettingButton();
-            }
-
-
            
         }
     }

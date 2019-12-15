@@ -86,6 +86,7 @@
 
             <Grid Grid.Row="2"
                   VerticalAlignment="Bottom"
+                  HorizontalAlignment="Left"
                   Margin="20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -95,6 +96,7 @@
                       Background="Transparent"
                       HorizontalAlignment="Left"
                       Name="SettingGrid"
+                      Visibility="Collapsed"
                       PointerPressed="SettingGrid_PointerPressed">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -109,7 +111,7 @@
                                FontSize="12"
                                Foreground="Gray" />
                 </Grid>
-                <Grid Grid.Column="1"
+                <Grid Grid.Column="0"
                       Background="Transparent"
                       HorizontalAlignment="Right"
                       Name="AboutGrid"

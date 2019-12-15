@@ -55,5 +55,10 @@ namespace Al_Quran.Pages
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainPage.Current.HighlightMenuItem(typeof(JuzListPage));
+        }
     }
 }

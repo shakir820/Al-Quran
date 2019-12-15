@@ -27,6 +27,8 @@ namespace Al_Quran.Models
 
 
 
+        private bool AyahPopulating { get; set; } = false;
+        public bool AyahPopulated { get; set; } = false;
 
         public ObservableCollection<Ayah_vm> Ayahs
         {
@@ -76,12 +78,26 @@ namespace Al_Quran.Models
 
         public  void GetAyah()
         {
-             Task.Run(async () => { var result = await App.AlQuranCloudServer.GetSurah((int)Number, this); });
+            if(AyahPopulated == false && AyahPopulating == false)
+            {
+                Task.Run(async () =>
+                {
+                    AyahPopulating = true;
+                    var result = await App.AlQuranCloudServer.GetSurah((int)Number, this);
+                    if (Ayahs.Count > 0)
+                    {
+                        AyahPopulated = true;
+                    }
+                    AyahPopulating = false;
+                });
+            }
+           
         }
 
 
         public void GetAyahTextTranslation(string identifier = "en.asad")
         {
+            
             Task.Run(async () => { var result = await App.AlQuranCloudServer.GetSurahTextTranslation((int)Number, this, identifier); });
         }
 

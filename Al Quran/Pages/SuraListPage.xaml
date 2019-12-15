@@ -16,7 +16,7 @@
     
     
     
-    <Page.Resources>
+    <!--<Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary Source="ms-appx:///Style/DictionaryLight.xaml"
@@ -31,7 +31,7 @@
             
            
         </ResourceDictionary>
-    </Page.Resources>
+    </Page.Resources>-->
 
 
 

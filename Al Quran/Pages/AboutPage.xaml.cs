@@ -32,5 +32,15 @@ namespace Al_Quran.Pages
         {
             //MainPage.Current.HightLightAboutButton();
         }
+
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainPage.Current.HightLightAboutButton();
+        }
     }
 }
