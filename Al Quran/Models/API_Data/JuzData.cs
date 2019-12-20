@@ -68,6 +68,7 @@ namespace Al_Quran.Models.API_Data
 
         [JsonProperty("sajda")]
         public SajdaUnion Sajda { get; set; }
+        
     }
 
     public partial class SajdaClass

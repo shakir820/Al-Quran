@@ -9,5 +9,13 @@
     <AppIconSource>C:\Users\SHAKIR\OneDrive\Documents\Adobe Illustrator Projects\Al Quran Logo.png</AppIconSource>
     <SplashScreenSource>C:\Users\SHAKIR\OneDrive\Documents\Adobe Illustrator Projects\Al Quran Logo.png</SplashScreenSource>
     <PackageLogoSource>C:\Users\SHAKIR\OneDrive\Documents\Adobe Illustrator Projects\Al Quran Logo.png</PackageLogoSource>
+    <UapAppxPackageBuildMode>StoreOnly</UapAppxPackageBuildMode>
+    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxBuildConfigurationSelection>x86|x64|arm</AppxBuildConfigurationSelection>
+    <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <DeviceId>30f105c9-681e-420b-a277-7c086ead8a4e</DeviceId>
+    <UseEmulator>true</UseEmulator>
   </PropertyGroup>
 </Project>

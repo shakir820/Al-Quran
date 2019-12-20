@@ -3,12 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Windows.ApplicationModel.Core;
+using Windows.Storage;
 using Windows.UI.Core;
 
 namespace Al_Quran.Models
@@ -59,8 +63,44 @@ namespace Al_Quran.Models
                 FetchSuraListFromServer();
             });
 
+            //Task.Run(CreateSerialization);
+
             Task.Run(() =>{ PopulateJuzList(); });
         }
+
+
+
+
+
+
+        public void CreateSerialization()
+        {
+            var collection = new JuzDataCollection();
+
+            int beginAyahNo = 100;
+            int endAyahNo = 200;
+
+
+            for(var i = 1; i < 6; i++)
+            {
+                var juzData = new JuzData();
+                juzData.BeginingAyahNo = beginAyahNo;
+                juzData.BeginningSurahAyahNo = i;
+                juzData.EndingAyahNo = i;
+                juzData.EndingSurahAyahNo = endAyahNo;
+                juzData.Title = "Juz" + " " + i.ToString();
+                juzData.Surahs.Add("Juz Surah 1");
+                juzData.Surahs.Add("Juz Surah 2");
+                collection.JuzCollection.Add(juzData);
+            }
+
+           
+            DataContractSerializer dcs = new DataContractSerializer(typeof(JuzDataCollection));
+            var localFolder = ApplicationData.Current.LocalFolder;
+            FileStream writer = new FileStream(localFolder.Path + @"\JuzDataCollection.xml", FileMode.Create, FileAccess.Write);
+            dcs.WriteObject(writer, collection);
+        }
+
 
 
 
@@ -93,6 +133,7 @@ namespace Al_Quran.Models
             {
                 var count = i + 1;
                 Juz_vm juz = new Juz_vm();
+                juz.Number = count;
                 juz.EnglishTitle = $"Juz {count}";
 
                 await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { JuzCollection.Add(juz); });

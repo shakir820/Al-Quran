@@ -33,10 +33,10 @@ namespace Al_Quran.Models.Helpers
         }
 
 
-        public static Juz_vm GetJuz(Juz juz)
+        public static void GetJuz(Juz juz, Juz_vm juz_vm)
         {
 
-            var Juz = new Juz_vm();
+           
             var edition = new Edition_vm();
 
             edition.EnglishName = juz.Edition.EnglishName;
@@ -46,7 +46,7 @@ namespace Al_Quran.Models.Helpers
             edition.Name = juz.Edition.Name;
             edition.Type = juz.Edition.Type;
 
-            Juz.Edition = edition;
+            juz_vm.Edition = edition;
 
             
 
@@ -86,12 +86,12 @@ namespace Al_Quran.Models.Helpers
                     Ayah.Surah.RevelationType = ayah.Surah.RevelationType;
                     Ayah.Text = ayah.Text;
 
-                    Juz.Ayahs.Add(Ayah);
+                    juz_vm.Ayahs.Add(Ayah);
                 }
             }
 
-            Juz.Number = juz.Number;
-            Juz.Surahs = new Dictionary<string, Surah_vm>();
+            juz_vm.Number = juz.Number;
+            juz_vm.Surahs = new Dictionary<string, Surah_vm>();
 
             foreach(var item in juz.Surahs)
             {
@@ -105,11 +105,8 @@ namespace Al_Quran.Models.Helpers
                     RevelationType = item.Value.RevelationType
                 };
 
-                Juz.Surahs.Add(item.Key, surah);
+                juz_vm.Surahs.Add(item.Key, surah);
             }
-
-
-            return Juz;
         }
 
 
@@ -181,40 +178,26 @@ namespace Al_Quran.Models.Helpers
                     {
                         Surah.Ayahs[i].TranslationText = surah.Ayahs[i].Text;
                     }
-
-                    //foreach (var ayah_item in surah.Ayahs)
-                    //{
-                    //    var Ayah = new Ayah_vm();
-                    //    Ayah.HizbQuarter = ayah_item.HizbQuarter;
-                    //    Ayah.Juz = ayah_item.Juz;
-                    //    Ayah.Manzil = ayah_item.Manzil;
-                    //    Ayah.Number = ayah_item.Number;
-                    //    Ayah.NumberInSurah = ayah_item.NumberInSurah;
-                    //    Ayah.Page = ayah_item.Page;
-                    //    Ayah.Ruku = ayah_item.Ruku;
-                    //    Ayah.Sajda = new Sajda_vm();
-                    //    if (ayah_item.Sajda.Bool != null)
-                    //    {
-                    //        Ayah.Sajda.Sajda_Existed = false;
-                    //    }
-                    //    else
-                    //    {
-                    //        Ayah.Sajda.Id = ayah_item.Sajda.SajdaClass.Id;
-                    //        Ayah.Sajda.Obligatory = ayah_item.Sajda.SajdaClass.Obligatory;
-                    //        Ayah.Sajda.Recommended = ayah_item.Sajda.SajdaClass.Recommended;
-                    //    }
-
-                    //    Ayah.Surah = Surah;
-                    //    Ayah.Text = ayah_item.Text;
-                    //    Surah.Ayahs.Insert(index, Ayah);
-                    //    index = index + 2;
-                    //}
                 }
             }
 
             
 
             //return Surah;
+        }
+
+        public static void GetJuzAyahTextTranslation(Juz juz1, Juz_vm juz2)
+        {
+            if (juz1.Ayahs != null)
+            {
+                if (juz1.Ayahs.Count > 0)
+                {
+                    for (var i = 0; i < juz1.Ayahs.Count; i++)
+                    {
+                        juz2.Ayahs[i].TranslationText = juz1.Ayahs[i].Text;
+                    }
+                }
+            }
         }
     }
 }

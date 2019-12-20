@@ -37,6 +37,8 @@ namespace Al_Quran
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+
         }
 
         /// <summary>

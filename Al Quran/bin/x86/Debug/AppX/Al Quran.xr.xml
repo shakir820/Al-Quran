@@ -169,7 +169,6 @@
     </RootType>
     <RootType FullName="Al_Quran.Pages.AboutPage" />
     <RootType FullName="Al_Quran.Pages.JuzListPage" />
-    <RootType FullName="Al_Quran.Pages.SettingPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
       <RootProperty Name="Width" />
       <RootProperty Name="Foreground" />
@@ -177,6 +176,8 @@
       <RootProperty Name="ShowPaused" />
       <RootProperty Name="ShowError" />
     </RootType>
+    <RootType FullName="Al_Quran.Pages.JuzViewPage" />
+    <RootType FullName="Al_Quran.Pages.SettingPage" />
     <RootType FullName="Al_Quran.Pages.SurahViewPage" />
     <RootType FullName="Al_Quran.Pages.SuraListPage" />
     <RootType FullName="Al_Quran.Converters.CurrNavigationItemFontSizeConverter" />

@@ -239,3 +239,8 @@ D:\GitHub\Al-Quran\Al Quran\obj\x86\Debug\qualifiers.txt.intermediate
 D:\GitHub\Al-Quran\Al Quran\obj\x86\Debug\MultipleQualifiersPerDimensionFound.txt
 D:\GitHub\Al-Quran\Al Quran\obj\x86\Debug\ProjectArchitectures.txt
 D:\GitHub\Al-Quran\Al Quran\obj\x86\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885094160000000.json
+E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\JuzViewPage.xbf
+E:\Github\Al-Quran\Al Quran\obj\x86\Debug\Pages\JuzViewPage.g.i.cs
+E:\Github\Al-Quran\Al Quran\obj\x86\Debug\Pages\JuzViewPage.g.cs
+E:\Github\Al-Quran\Al Quran\obj\x86\Debug\Pages\JuzViewPage.xaml
+E:\Github\Al-Quran\Al Quran\obj\x86\Debug\Pages\JuzViewPage.xbf

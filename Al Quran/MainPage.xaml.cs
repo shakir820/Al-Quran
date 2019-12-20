@@ -216,6 +216,16 @@ namespace Al_Quran
                     item.IsNavigated = true;
                 }
             }
+            else if(sourcePageType == typeof(JuzViewPage))
+            {
+                var item = NavigationItems.SingleOrDefault(a => a.Type == typeof(JuzListPage));
+
+                if (item != null)
+                {
+                    _mainMenuNavigationItem = item;
+                    item.IsNavigated = true;
+                }
+            }
 
             UnPressedBottomBtns();
         }

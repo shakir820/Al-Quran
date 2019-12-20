@@ -1,0 +1,2 @@
+MainPackage=E:\Github\Al-Quran\Al Quran\bin\x64\Release\Al Quran_1.0.1.0_x64.msix
+SymbolPackage=E:\Github\Al-Quran\Al Quran\obj\x64\Release\Symbols\Al Quran_1.0.1.0_x64.appxsym

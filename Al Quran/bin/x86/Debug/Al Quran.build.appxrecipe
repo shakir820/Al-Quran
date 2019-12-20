@@ -258,6 +258,9 @@
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\JuzListPage.xbf">
       <PackagePath>Pages\JuzListPage.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\JuzViewPage.xbf">
+      <PackagePath>Pages\JuzViewPage.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\SettingPage.xbf">
       <PackagePath>Pages\SettingPage.xbf</PackagePath>
     </AppxPackagedFile>

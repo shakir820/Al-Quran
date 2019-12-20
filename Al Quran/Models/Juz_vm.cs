@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,7 +12,7 @@ namespace Al_Quran.Models
     public class Juz_vm: INotifyPropertyChanged
     {
         private long _number;
-        private List<Ayah_vm> _ayahs = new List<Ayah_vm>();
+        private ObservableCollection<Ayah_vm> _ayahs = new ObservableCollection<Ayah_vm>();
         private Dictionary<string, Surah_vm> _surahs = new Dictionary<string, Surah_vm>();
         private Edition_vm _edition { get; set; }
         private string _arabicTitle;
@@ -22,6 +23,8 @@ namespace Al_Quran.Models
 
 
 
+        public bool AyahPopulated { get; private set; } = false;
+        public bool AyahPopulating { get; private set; } = false;
 
         public string ArabicTitle
         {
@@ -41,7 +44,7 @@ namespace Al_Quran.Models
             set { _number = value; RaisePropertyChanged(); }
         }
 
-        public List<Ayah_vm> Ayahs
+        public ObservableCollection<Ayah_vm> Ayahs
         {
             get { return _ayahs; }
             set { _ayahs = value; RaisePropertyChanged(); }
@@ -58,6 +61,33 @@ namespace Al_Quran.Models
             get { return _edition; }
             set { _edition = value; RaisePropertyChanged(); }
         }
+
+       
+
+       
+
+        public void GetAyah()
+        {
+            if (AyahPopulated == false && AyahPopulating == false)
+            {
+                Task.Run(async () =>
+                {
+                    AyahPopulating = true;
+                    var result = await App.AlQuranCloudServer.GetJuzasync((int)Number, this);
+                    if (Ayahs.Count > 0)
+                    {
+                        AyahPopulated = true;
+                    }
+                    AyahPopulating = false;
+                });
+            }
+        }
+
+        public void GetAyahTextTranslation(string identifier = "en.asad")
+        {
+            Task.Run(async () => { var result = await App.AlQuranCloudServer.GetJuzAyahTextTranslation((int)Number, this, identifier); });
+        }
+
 
 
 

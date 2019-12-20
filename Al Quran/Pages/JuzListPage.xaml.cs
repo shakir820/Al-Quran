@@ -60,5 +60,11 @@ namespace Al_Quran.Pages
         {
             MainPage.Current.HighlightMenuItem(typeof(JuzListPage));
         }
+
+        private void JuzListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = (Juz_vm)JuzListView.SelectedItem;
+            Frame.Navigate(typeof(JuzViewPage), selectedItem);
+        }
     }
 }

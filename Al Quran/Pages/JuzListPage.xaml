@@ -12,25 +12,7 @@
 
     
     
-    <!--<Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary Source="ms-appx:///Style/DictionaryLight.xaml"
-                                    x:Key="Light" />
-                <ResourceDictionary Source="ms-appx:///Style/DictionaryDark.xaml"
-                                    x:Key="Dark" />
-            </ResourceDictionary.ThemeDictionaries>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ms-appx:///Style/Style.xaml" />
-                <ResourceDictionary Source="ms-appx:///Style/ConverterDictionary.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>-->
-
-
-
-
-
+    
     <Grid Margin="0,20,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -44,7 +26,8 @@
                    Margin="20,0,0,0" />
 
         <ListView Grid.Row="1"
-                  Name="SuraListView"
+                  Name="JuzListView"
+                  SelectionChanged="JuzListView_SelectionChanged"
                   ItemsSource="{x:Bind QuranFunctionality.JuzCollection, Mode=OneWay}"
                   Margin="0,20,0,0">
             <ListView.ItemTemplate>

@@ -17,6 +17,7 @@ namespace Al_Quran.Models.CommunicationWithServer
     {
         public event EventHandler InternetError;
         public event EventHandler SurahPopulated;
+        public event EventHandler JuzPopulated;
         public event EventHandler SurahTextTranslationFetched;
 
 
@@ -70,12 +71,12 @@ namespace Al_Quran.Models.CommunicationWithServer
             }
         }
 
+        
 
-
-        public  async Task<Juz_vm> GetJuzsync(int number)
+        public  async Task<bool> GetJuzasync(int number, Juz_vm juz)
         {
             StringContent a = new StringContent("");
-            string uri = $"http://api.alquran.cloud/v1/juz/{number}/en.asad";
+            string uri = $"http://api.alquran.cloud/v1/juz/{number}/quran-simple";
 
             if (CheckForInternetConnection())
             {
@@ -93,31 +94,36 @@ namespace Al_Quran.Models.CommunicationWithServer
                         {
                             if (quran.Juz != null)
                             {
-                                return Helpers.FetchDataHelper.GetJuz(quran.Juz);
+                                await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => 
+                                {
+                                    Helpers.FetchDataHelper.GetJuz(quran.Juz, juz);
+                                });
+                                JuzPopulated?.Invoke(this, new EventArgs());
+                                return false;
                             }
-                            else return null;
+                            else return false;
                         }
                         else
                         {
-                            return null;
+                            return false;
                         }
                     }
                     catch
                     {
-                        return null;
+                        return false;
                     }
                 }
                 catch
                 {
                     //cannot communicate with server. It may have many reasons.
-                    return null;
+                    return false;
                 }
             }
             else
             {
                 //ShowInternetErrorNotification();
                 InternetError?.Invoke(this, new EventArgs());
-                return null;
+                return true;
             }
         }
 
@@ -186,6 +192,65 @@ namespace Al_Quran.Models.CommunicationWithServer
 
 
 
+        public async Task<bool> GetJuzAyahTextTranslation(int number, Juz_vm juz, string identifier = "en.asad")
+        {
+
+            StringContent a = new StringContent("");
+            string uri = $"http://api.alquran.cloud/v1/juz/{number}/{identifier}";
+
+            if (CheckForInternetConnection())
+            {
+                try
+                {
+                    HttpResponseMessage response = await App.client.GetAsync(uri);
+                    try
+                    {
+                        response.EnsureSuccessStatusCode();
+                        // now serialize data
+                        var stringContent = await response.Content.ReadAsStringAsync();
+                        QuranJaz quran = QuranJaz.FromJson(stringContent);
+
+                        if (quran.Status == "OK")
+                        {
+                            if (quran.Juz != null)
+                            {
+                                await CoreApplication.MainView.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                                {
+                                    Helpers.FetchDataHelper.GetJuzAyahTextTranslation(quran.Juz, juz);
+                                });
+                                return false;
+                            }
+                            else return false;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }
+                catch
+                {
+                    //cannot communicate with server. It may have many reasons.
+                    return false;
+                }
+            }
+            else
+            {
+                //ShowInternetErrorNotification();
+                InternetError?.Invoke(this, new EventArgs());
+                return true;
+            }
+        }
+
+
+
+
+
+
         public async Task<bool> GetSurahTextTranslation(int surah_num, Surah_vm param_surah, string identifier = "en.asad")
         {
 
@@ -241,6 +306,9 @@ namespace Al_Quran.Models.CommunicationWithServer
                 return (true);
             }
         }
+
+
+
 
 
 

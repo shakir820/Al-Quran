@@ -30,13 +30,13 @@
     <AppXManifest Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2019-12-14T16:57:00.178</Modified>
+      <Modified>2019-12-19T15:06:03.743</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Al Quran.exe">
       <PackagePath>entrypoint\Al Quran.exe</PackagePath>
-      <Modified>2019-12-14T16:56:59.771</Modified>
+      <Modified>2019-12-19T15:06:03.371</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\SHAKIR\.nuget\packages\newtonsoft.json\12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
@@ -310,51 +310,55 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Al Quran.xr.xml">
       <PackagePath>Al Quran.xr.xml</PackagePath>
-      <Modified>2019-12-14T16:47:01.048</Modified>
+      <Modified>2019-12-19T14:58:08.073</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2019-12-14T16:56:59.535</Modified>
+      <Modified>2019-12-19T15:06:03.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2019-12-14T16:56:59.535</Modified>
+      <Modified>2019-12-19T15:06:03.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\AboutPage.xbf">
       <PackagePath>Pages\AboutPage.xbf</PackagePath>
-      <Modified>2019-12-14T16:56:59.535</Modified>
+      <Modified>2019-12-19T15:06:03.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\JuzListPage.xbf">
       <PackagePath>Pages\JuzListPage.xbf</PackagePath>
-      <Modified>2019-12-14T16:56:59.535</Modified>
+      <Modified>2019-12-19T15:06:03.100</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\JuzViewPage.xbf">
+      <PackagePath>Pages\JuzViewPage.xbf</PackagePath>
+      <Modified>2019-12-19T15:06:03.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\SettingPage.xbf">
       <PackagePath>Pages\SettingPage.xbf</PackagePath>
-      <Modified>2019-12-14T16:56:59.535</Modified>
+      <Modified>2019-12-19T15:06:03.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\SurahViewPage.xbf">
       <PackagePath>Pages\SurahViewPage.xbf</PackagePath>
-      <Modified>2019-12-14T16:56:59.535</Modified>
+      <Modified>2019-12-19T15:06:03.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Pages\SuraListPage.xbf">
       <PackagePath>Pages\SuraListPage.xbf</PackagePath>
-      <Modified>2019-12-14T16:56:59.535</Modified>
+      <Modified>2019-12-19T15:06:03.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Style\ConverterDictionary.xbf">
       <PackagePath>Style\ConverterDictionary.xbf</PackagePath>
-      <Modified>2019-12-14T16:56:59.534</Modified>
+      <Modified>2019-12-19T15:06:03.099</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Style\DictionaryDark.xbf">
       <PackagePath>Style\DictionaryDark.xbf</PackagePath>
-      <Modified>2019-12-14T16:56:59.534</Modified>
+      <Modified>2019-12-19T15:06:03.099</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Style\DictionaryLight.xbf">
       <PackagePath>Style\DictionaryLight.xbf</PackagePath>
-      <Modified>2019-12-14T16:56:59.535</Modified>
+      <Modified>2019-12-19T15:06:03.099</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Style\Style.xbf">
       <PackagePath>Style\Style.xbf</PackagePath>
-      <Modified>2019-12-14T16:56:59.535</Modified>
+      <Modified>2019-12-19T15:06:03.100</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -362,11 +366,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2019-12-12T16:20:09.782</Modified>
+      <Modified>2019-12-18T14:45:22.029</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Github\Al-Quran\Al Quran\bin\x86\Debug\Core\Al Quran.exe">
       <PackagePath>Al Quran.exe</PackagePath>
-      <Modified>2019-12-14T16:57:00.174</Modified>
+      <Modified>2019-12-19T15:06:03.739</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
