@@ -129,15 +129,19 @@ namespace Al_Quran.Models
 
         private async void PopulateJuzList()
         {
-            for (var i = 0; i < 30; i++)
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
             {
-                var count = i + 1;
-                Juz_vm juz = new Juz_vm();
-                juz.Number = count;
-                juz.EnglishTitle = $"Juz {count}";
+                for (var i = 0; i < 30; i++)
+                {
+                    var count = i + 1;
+                    Juz_vm juz = new Juz_vm();
+                    juz.Number = count;
+                    juz.EnglishTitle = $"Juz {count}";
+                    JuzCollection.Add(juz);
 
-                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { JuzCollection.Add(juz); });
-            }
+                }
+            });
+           
         }
 
 

@@ -9,7 +9,7 @@
     <AppIconSource>C:\Users\SHAKIR\OneDrive\Documents\Adobe Illustrator Projects\Al Quran Logo.png</AppIconSource>
     <SplashScreenSource>C:\Users\SHAKIR\OneDrive\Documents\Adobe Illustrator Projects\Al Quran Logo.png</SplashScreenSource>
     <PackageLogoSource>C:\Users\SHAKIR\OneDrive\Documents\Adobe Illustrator Projects\Al Quran Logo.png</PackageLogoSource>
-    <UapAppxPackageBuildMode>StoreOnly</UapAppxPackageBuildMode>
+    <UapAppxPackageBuildMode>CI</UapAppxPackageBuildMode>
     <AppxShowAllApps>False</AppxShowAllApps>
     <AppxBuildConfigurationSelection>x86|x64|arm</AppxBuildConfigurationSelection>
     <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>

@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="25850SHAKIRAHMED.AlQuran" Publisher="CN=5E69841F-661E-4410-9B43-5B655CAA5D13" Version="1.0.1.0" ProcessorArchitecture="x64" />
+  <Identity Name="25850SHAKIRAHMED.AlQuran" Publisher="CN=5E69841F-661E-4410-9B43-5B655CAA5D13" Version="1.0.2.0" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="6ded830f-95a7-4f3c-b80a-eb92c393f717" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Al Quran</DisplayName>

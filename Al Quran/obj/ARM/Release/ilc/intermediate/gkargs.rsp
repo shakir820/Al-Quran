@@ -1,8 +1,0 @@
-﻿"E:\Github\Al-Quran\Al Quran\obj\ARM\Release\ilc\in\Al Quran.exe"
-"E:\Github\Al-Quran\Al Quran\obj\ARM\Release\ilc\in\Newtonsoft.Json.dll"
-/Lib:"E:\Github\Al-Quran\Al Quran\obj\ARM\Release\ilc\in"
-/Lib:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm.microsoft.net.native.compiler\2.2.7-rel-27913-00\tools\ARM\ilc\lib\Private"
-/WinMD:"E:\Github\Al-Quran\Al Quran\obj\ARM\Release\ilc\in\WinMetadata\Windows.winmd"
-/VSTelemetrySessionSettings:"{"IsOptedIn":true,"HostName":"Dev14","AppInsightsInstrumentationKey":"f144292e-e3b2-4011-ac90-20e5c03fbce5","AsimovInstrumentationKey":"AIF-312cbd79-9dbb-4c48-a7da-3cc2a931cb70","AppId":1001,"UserId":"2c92e5e2-547b-46bc-aef6-619daec476cf","Id":"00a0c8e8-1348-4997-b62e-d74be1ed1969","ProcessStartTime":637123324425396566}"
-/RdXmlPath:"C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\microsoft.net.native.compiler\2.2.7-rel-27913-00\tools\LibraryXML"
-/RunOnlyPreDR

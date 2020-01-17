@@ -6,7 +6,7 @@
     <autoResourcePackage qualifier="DXFeatureLevel" />
     <omitSchemaFromResourcePacks />
   </packaging>
-  <index root="\" startIndexAt="E:\Github\Al-Quran\Al Quran\bin\x86\Release\ilc\resources.pri">
+  <index root="\" startIndexAt="E:\Github\Al-Quran\Al Quran\bin\x86\Release\resources.pri">
     <default>
       <qualifier name="Language" value="en-US" />
       <qualifier name="Contrast" value="standard" />
