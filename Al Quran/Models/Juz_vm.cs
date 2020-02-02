@@ -62,9 +62,8 @@ namespace Al_Quran.Models
             set { _edition = value; RaisePropertyChanged(); }
         }
 
-       
-
-       
+        public bool IsFetchingTranslation { get; internal set; } = false;
+        public bool CancelFetchingTranslation { get; internal set; } = false;
 
         public void GetAyah()
         {
@@ -85,7 +84,13 @@ namespace Al_Quran.Models
 
         public void GetAyahTextTranslation(string identifier = "en.asad")
         {
-            Task.Run(async () => { var result = await App.AlQuranCloudServer.GetJuzAyahTextTranslation((int)Number, this, identifier); });
+            Task.Run(async () => 
+            {
+                IsFetchingTranslation = true;
+                var result = await App.AlQuranCloudServer.GetJuzAyahTextTranslation((int)Number, this, identifier);
+                IsFetchingTranslation = false;
+            });
+        
         }
 
 

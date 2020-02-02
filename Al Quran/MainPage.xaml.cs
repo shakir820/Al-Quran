@@ -24,6 +24,10 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Al_Quran.Models.CommunicationWithServer;
 using Windows.UI.Xaml.Media.Animation;
+using Microsoft.Toolkit.Uwp.UI.Animations;
+using Windows.Storage;
+using Al_Quran.Models.Events;
+
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -37,6 +41,19 @@ namespace Al_Quran
         public Frame NavigationFrame;
         public static MainPage Current;
         public QuranFunctionality QuranFunctionality { get; set; }
+
+
+
+
+
+        public event EventHandler<TranslationLanguageChangedEventArgs> TranslationLanguageChanged;
+
+
+
+
+
+
+
 
         public MainPage()
         {
@@ -62,22 +79,188 @@ namespace Al_Quran
             
         }
 
+
+
+
+
+
         private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
         {
             AppTitleBar.Height = sender.Height;
         }
 
+
+
+
+
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
             NavigationListView.SelectedIndex = 0;
-
+            SelectFontSize();
+            Task.Run(GetEditions);
         }
 
 
 
 
-       
+
+
+        private async void GetEditions()
+        {
+            PopulateLanguages();
+
+            var result = await App.AlQuranCloudServer.GetEditionsAsync();
+            if(result.internetError == true)
+            {
+                return;
+            }
+
+            if(result.editonCollection != null)
+            {
+                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => 
+                {
+                    TranslationLanguageComboBox.ItemsSource = result.editonCollection;
+
+
+                    var localSettings = ApplicationData.Current.LocalSettings;
+                    if (localSettings.Values.ContainsKey("EditionIdentifier"))
+                    {
+                        var editionIdentity = (string) localSettings.Values["EditionIdentifier"];
+
+                        if(result.editonCollection.Count > 0)
+                        {
+                            var SelectedEdition = result.editonCollection.SingleOrDefault(a => a.Identifier == editionIdentity);
+                            if(SelectedEdition != null)
+                            {
+                                var selectedIndex = result.editonCollection.IndexOf(SelectedEdition);
+                                TranslationLanguageComboBox.SelectedIndex = selectedIndex;
+                                QuranFunctionality.SelectedTranslationIdentifier = editionIdentity;
+                            }
+                        }   
+                    }
+                });
+            }
+        }
+
+
+
+
+
+
+
+
+
+        private void SelectFontSize()
+        {
+            switch (QuranFunctionality.FontSizeVM.FontSize)
+            {
+                case 16:
+                    FontSizeComboBox.SelectedIndex = 0;
+                    break;
+
+                case 18:
+                    FontSizeComboBox.SelectedIndex = 1;
+                    break;
+
+                case 20:
+                    FontSizeComboBox.SelectedIndex = 2;
+                    break;
+
+                case 22:
+                    FontSizeComboBox.SelectedIndex = 3;
+                    break;
+
+                case 24:
+                    FontSizeComboBox.SelectedIndex = 4;
+                    break;
+
+                case 26:
+                    FontSizeComboBox.SelectedIndex = 5;
+                    break;
+
+                case 28:
+                    FontSizeComboBox.SelectedIndex = 6;
+                    break;
+
+                case 30:
+                    FontSizeComboBox.SelectedIndex = 7;
+                    break;
+
+                default:
+                    FontSizeComboBox.SelectedIndex = 0;
+                    break;
+            }
+        }
+
+
+
+
+
+        private void FontSizeVM_FontSizeChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+
+
+
+
+
+
+
+
+
+        private void PopulateLanguages()
+        {
+            if(LanguageDictionary.Languages != null && LanguageDictionary.Languages.Count > 0)
+            {
+                return;
+            }
+
+            LanguageDictionary.Languages = new Dictionary<string, string>();
+            LanguageDictionary.Languages.Add("az", "Azerbaijani");
+            LanguageDictionary.Languages.Add("bn", "Bengali");
+            LanguageDictionary.Languages.Add("cs", "Czech");
+            LanguageDictionary.Languages.Add("de", "German");
+            LanguageDictionary.Languages.Add("dv", "Divehi");
+            LanguageDictionary.Languages.Add("en", "English");
+            LanguageDictionary.Languages.Add("es", "Spanish");
+            LanguageDictionary.Languages.Add("fa", "Farsi");
+            LanguageDictionary.Languages.Add("fr", "French");
+            LanguageDictionary.Languages.Add("ha", "Hausa");
+            LanguageDictionary.Languages.Add("hi", "Hindi");
+            LanguageDictionary.Languages.Add("id", "Indonesian");
+            LanguageDictionary.Languages.Add("it", "Italian");
+            LanguageDictionary.Languages.Add("ja", "Japanese");
+            LanguageDictionary.Languages.Add("ko", "Korean");
+            LanguageDictionary.Languages.Add("ku", "Kurdish");
+            LanguageDictionary.Languages.Add("ml", "Malayalam");
+            LanguageDictionary.Languages.Add("nl", "Dutch");
+            LanguageDictionary.Languages.Add("no", "Norwegian");
+            LanguageDictionary.Languages.Add("pl", "Polish");
+            LanguageDictionary.Languages.Add("pt", "Portuguese");
+            LanguageDictionary.Languages.Add("ro", "Romanian");
+            LanguageDictionary.Languages.Add("ru", "Russian");
+            LanguageDictionary.Languages.Add("sd", "Sindhi");
+            LanguageDictionary.Languages.Add("so", "Somali");
+            LanguageDictionary.Languages.Add("sq", "Albanian");
+            LanguageDictionary.Languages.Add("sv", "Swedish");
+            LanguageDictionary.Languages.Add("sw", "Swahili");
+            LanguageDictionary.Languages.Add("ta", "Tamil");
+            LanguageDictionary.Languages.Add("tg", "Tajik");
+            LanguageDictionary.Languages.Add("th", "Thai");
+            LanguageDictionary.Languages.Add("tr", "Turkish");
+            LanguageDictionary.Languages.Add("tt", "Tatar");
+            LanguageDictionary.Languages.Add("ug", "Uighur");
+            LanguageDictionary.Languages.Add("ur", "Urdu");
+            LanguageDictionary.Languages.Add("uz", "Uzbek");
+        }
+
+
+
+
+
 
 
 
@@ -99,34 +282,12 @@ namespace Al_Quran
 
         public TextBlock NavigatedTextBlockItem;
 
-        //private void Grid_PointerEntered(object sender, PointerRoutedEventArgs e)
-        //{
-
-        //    var grid = (Grid)sender;
-        //    var TextBlockchild = (TextBlock)VisualTreeHelper.GetChild(grid, 0);
-        //    //var FontIconchild = (FontIcon)VisualTreeHelper.GetChild(grid, 0);
-
-        //    //FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Bold;
-        //    //TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Bold;
-        //}
+      
 
 
 
-        //private void Grid_PointerExited(object sender, PointerRoutedEventArgs e)
-        //{
-        //    var grid = (Grid)sender;
-        //    var TextBlockchild = (TextBlock)VisualTreeHelper.GetChild(grid, 1);
-        //    var FontIconchild = (FontIcon)VisualTreeHelper.GetChild(grid, 0);
-        //    if (_mainMenuNavigationItem != null)
-        //    {
-        //        if (_mainMenuNavigationItem.Name == TextBlockchild.Text)
-        //        {
-        //            return;
-        //        }
-        //    }
-        //    TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
-        //    FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
-        //}
+
+
 
         internal static void FindChildren<T>(List<T> results, DependencyObject startNode) where T : DependencyObject
         {
@@ -143,6 +304,15 @@ namespace Al_Quran
             }
         }
 
+
+
+
+
+
+
+
+
+
         private void NavigationListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (NavigationListView.SelectedIndex == -1)
@@ -150,15 +320,7 @@ namespace Al_Quran
                 return;
             }
 
-            //if (_mainMenuNavigationItem != null)
-            //{
-            //    _mainMenuNavigationItem.IsNavigated = false;
-            //}
-
-            //var item = (NavigationItem)NavigationListView.SelectedItem;
-            //item.IsNavigated = true;
-            //_mainMenuNavigationItem = item;
-
+          
             switch (NavigationListView.SelectedIndex)
             {
                 case 0:
@@ -176,6 +338,14 @@ namespace Al_Quran
 
            // UnPressedBottomBtns();
         }
+
+
+
+
+
+
+
+
 
 
 
@@ -230,55 +400,12 @@ namespace Al_Quran
             UnPressedBottomBtns();
         }
 
-        //private void SettingGrid_PointerEntered(object sender, PointerRoutedEventArgs e)
-        //{
-        //    var grid = (Grid)sender;
-        //    var TextBlockchild = (TextBlock)VisualTreeHelper.GetChild(grid, 1);
-        //    var FontIconchild = (FontIcon)VisualTreeHelper.GetChild(grid, 0);
+      
 
-        //    FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Bold;
-        //    TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Bold;
-        //}
 
-        //private void SettingGrid_PointerExited(object sender, PointerRoutedEventArgs e)
-        //{
-        //    var grid = (Grid)sender;
-        //    var TextBlockchild = (TextBlock)VisualTreeHelper.GetChild(grid, 1);
-        //    var FontIconchild = (FontIcon)VisualTreeHelper.GetChild(grid, 0);
 
-        //    if (BottomBtnsID == 1)
-        //    {
-        //        return;
-        //    }
 
-        //    FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
-        //    TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
-        //}
 
-        //private void AboutGrid_PointerEntered(object sender, PointerRoutedEventArgs e)
-        //{
-        //    var grid = (Grid)sender;
-        //    var TextBlockchild = (TextBlock)VisualTreeHelper.GetChild(grid, 1);
-        //    var FontIconchild = (FontIcon)VisualTreeHelper.GetChild(grid, 0);
-
-        //    FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Bold;
-        //    TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Bold;
-        //}
-
-        //private void AboutGrid_PointerExited(object sender, PointerRoutedEventArgs e)
-        //{
-        //    var grid = (Grid)sender;
-        //    var TextBlockchild = (TextBlock)VisualTreeHelper.GetChild(grid, 1);
-        //    var FontIconchild = (FontIcon)VisualTreeHelper.GetChild(grid, 0);
-
-        //    if (BottomBtnsID == 2)
-        //    {
-        //        return;
-        //    }
-
-        //    FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
-        //    TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
-        //}
 
 
 
@@ -299,13 +426,12 @@ namespace Al_Quran
             }
             NavigationListView.SelectedIndex = -1;
 
-            //grid = (Grid)SettingGrid;
-            //TextBlockchild = (TextBlock)VisualTreeHelper.GetChild(grid, 1);
-            //FontIconchild = (FontIcon)VisualTreeHelper.GetChild(grid, 0);
-
-            //FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
-            //TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
+          
         }
+
+
+
+
 
 
 
@@ -336,17 +462,41 @@ namespace Al_Quran
         }
 
 
+
+
+
+
+
+
+
         private void AboutGrid_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
            
             frame.Navigate(typeof(AboutPage));
         }
 
+
+
+
+
+
+
+
+
         private void SettingGrid_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
           
             frame.Navigate(typeof(SettingPage));
         }
+
+
+
+
+
+
+
+
+
 
         private void UnPressedBottomBtns()
         {
@@ -356,13 +506,16 @@ namespace Al_Quran
             var FontIconchild = (FontIcon)VisualTreeHelper.GetChild(AboutGrid, 0);
             FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
             TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
-            //settings btn
-            //TextBlockchild = (TextBlock)VisualTreeHelper.GetChild(SettingGrid, 1);
-            //FontIconchild = (FontIcon)VisualTreeHelper.GetChild(SettingGrid, 0);
-            //FontIconchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
-            //TextBlockchild.FontWeight = Windows.UI.Text.FontWeights.Normal;
+           
         }
         #endregion
+
+
+
+
+
+
+
 
 
 
@@ -376,6 +529,16 @@ namespace Al_Quran
             }
         }
 
+
+
+
+
+
+
+
+
+
+
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             if (frame.CanGoBack)
@@ -383,6 +546,18 @@ namespace Al_Quran
                 frame.GoBack();
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void frame_Navigated(object sender, NavigationEventArgs e)
         {
@@ -395,6 +570,151 @@ namespace Al_Quran
                 BackButton.Visibility = Visibility.Collapsed;
             }
            
+            if(e.SourcePageType == typeof(SurahViewPage) || e.SourcePageType == typeof(JuzViewPage))
+            {
+                ShowOptionPanel();
+            }
+            else
+            {
+
+
+                if(OptionStackPanel.Visibility == Visibility.Visible)
+                {
+                    HideOptionPanel();
+                }
+            }
+
+            NavigationListView.SelectedIndex = -1;
+        }
+
+
+
+
+
+
+
+
+
+
+
+        public async void ShowOptionPanel()
+        {
+            OptionStackPanel.Visibility = Visibility.Visible;
+            _= OptionStackPanel.Offset(offsetX: 0.0f, offsetY: -50.0f, duration: 300, delay: 200).StartAsync();
+            await OptionStackPanel.Fade(value: 1.0f, duration: 300, delay: 200).StartAsync();
+
+        }
+
+
+
+
+
+
+
+
+
+
+        public async void HideOptionPanel()
+        {
+          
+            _ = OptionStackPanel.Fade(value: 0.0f, duration: 300, delay: 0).StartAsync();
+            await OptionStackPanel.Offset(offsetX: 0.0f, offsetY: 50.0f, duration: 300, delay: 0).StartAsync();
+            OptionStackPanel.Visibility = Visibility.Collapsed;
+        }
+
+
+
+
+
+
+
+
+
+
+
+        private void FontSizeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
+            switch (FontSizeComboBox.SelectedIndex)
+            {
+                case 0:
+                    QuranFunctionality.FontSizeVM.FontSize = 16;
+                    break;
+
+                case 1:
+                    QuranFunctionality.FontSizeVM.FontSize = 18;
+                    break;
+
+                case 2:
+                    QuranFunctionality.FontSizeVM.FontSize = 20;
+                    break;
+
+                case 3:
+                    QuranFunctionality.FontSizeVM.FontSize = 22;
+                    break;
+
+                case 4:
+                    QuranFunctionality.FontSizeVM.FontSize = 24;
+                    break;
+
+                case 5:
+                    QuranFunctionality.FontSizeVM.FontSize = 26;
+                    break;
+
+                case 6:
+                    QuranFunctionality.FontSizeVM.FontSize = 28;
+                    break;
+
+                case 7:
+                    QuranFunctionality.FontSizeVM.FontSize = 30;
+                    break;
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        private void TranslationLanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(TranslationLanguageComboBox.SelectedIndex == -1)
+            {
+                return;
+            }
+
+            var selectedItem = (Edition_vm) TranslationLanguageComboBox.SelectedItem;
+
+            var localSettings = ApplicationData.Current.LocalSettings;
+            localSettings.Values["EditionIdentifier"] = selectedItem.Identifier;
+
+            QuranFunctionality.SelectedTranslationIdentifier = selectedItem.Identifier;
+
+            TranslationLanguageChanged?.Invoke(this, new TranslationLanguageChangedEventArgs { Identifier = selectedItem.Identifier });
+
+        }
+
+        private void autoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+             if(QuranFunctionality.SuraCollection.Count > 0)
+            {
+                var searchedSurah = new List<Surah_vm>();
+
+                searchedSurah = QuranFunctionality.SuraCollection.Where(a => a.EnglishName.IndexOf(args.QueryText, StringComparison.CurrentCultureIgnoreCase) > -1).ToList();
+
+                frame.Navigate(typeof(SearchPage), searchedSurah);
+            }
         }
     }
+
+
+    
 }

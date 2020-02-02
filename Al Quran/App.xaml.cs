@@ -1,4 +1,5 @@
-﻿using Al_Quran.Models.CommunicationWithServer;
+﻿using Al_Quran.Models;
+using Al_Quran.Models.CommunicationWithServer;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,8 +38,6 @@ namespace Al_Quran
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
-
-
         }
 
         /// <summary>
@@ -103,6 +102,7 @@ namespace Al_Quran
         {
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
+            //QuranFunctionality.Current.SaveAppSettings();
             deferral.Complete();
         }
     }

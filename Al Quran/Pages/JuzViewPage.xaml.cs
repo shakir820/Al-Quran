@@ -1,4 +1,5 @@
 ﻿using Al_Quran.Models;
+using Al_Quran.Models.Events;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -29,7 +32,11 @@ namespace Al_Quran.Pages
         {
             this.InitializeComponent();
             App.AlQuranCloudServer.InternetError += AlQuranCloudServer_InternetError;
-            App.AlQuranCloudServer.JuzPopulated += AlQuranCloudServer_JuzPopulated; ;
+            App.AlQuranCloudServer.JuzPopulated += AlQuranCloudServer_JuzPopulated;
+
+            QuranFunctionality = QuranFunctionality.Current;
+
+            NavigationCacheMode = NavigationCacheMode.Enabled;
         }
 
        
@@ -60,8 +67,24 @@ namespace Al_Quran.Pages
                 NoInternetGrid.Visibility = Visibility.Collapsed;
             });
 
-            Juz.GetAyahTextTranslation();
+
+
+            if (QuranFunctionality.SelectedTranslationIdentifier != null && QuranFunctionality.SelectedTranslationIdentifier != "")
+            {
+                Juz.GetAyahTextTranslation(QuranFunctionality.SelectedTranslationIdentifier);
+               
+            }
+            else
+            {
+                Juz.GetAyahTextTranslation();
+            }
+
+            App.AlQuranCloudServer.JuzPopulated -= AlQuranCloudServer_JuzPopulated;
         }
+
+
+
+
 
         private async void AlQuranCloudServer_InternetError(object sender, EventArgs e)
         {
@@ -110,6 +133,29 @@ namespace Al_Quran.Pages
                 AyahListView.Visibility = Visibility.Visible;
                 NoInternetGrid.Visibility = Visibility.Collapsed;
             }
+
+            MainPage.Current.TranslationLanguageChanged += Current_TranslationLanguageChanged;
+        }
+
+        private void Current_TranslationLanguageChanged(object sender, TranslationLanguageChangedEventArgs e)
+        {
+            Task.Run(() =>
+            {
+
+                if (Juz.AyahPopulated == true)
+                {
+                    while (Juz.IsFetchingTranslation == true)
+                    {
+                        Juz.CancelFetchingTranslation = true;
+                        Thread.Sleep(100);
+                    }
+
+                    Juz.CancelFetchingTranslation = false;
+                    //Surah.IsFetchingTranslation = true;
+                    Juz.GetAyahTextTranslation(e.Identifier);
+                }
+
+            });
         }
 
         private void TryAgianBtn_Click(object sender, RoutedEventArgs e)
@@ -118,6 +164,11 @@ namespace Al_Quran.Pages
             AyahListView.Visibility = Visibility.Collapsed;
             NoInternetGrid.Visibility = Visibility.Collapsed;
             Juz.GetAyah();
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            MainPage.Current.TranslationLanguageChanged -= Current_TranslationLanguageChanged;
         }
     }
 }

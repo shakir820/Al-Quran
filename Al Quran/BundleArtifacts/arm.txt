@@ -1,4 +1,4 @@
-ResourcePack=E:\Github\Al-Quran\Al Quran\bin\ARM\Release\Al Quran_1.0.2.0_scale-100.msix
-ResourcePack=E:\Github\Al-Quran\Al Quran\bin\ARM\Release\Al Quran_1.0.2.0_scale-125.msix
-ResourcePack=E:\Github\Al-Quran\Al Quran\bin\ARM\Release\Al Quran_1.0.2.0_scale-150.msix
-ResourcePack=E:\Github\Al-Quran\Al Quran\bin\ARM\Release\Al Quran_1.0.2.0_scale-400.msix
+ResourcePack=E:\Github\Al-Quran\Al Quran\bin\ARM\Release\Al Quran_1.0.3.0_scale-100.msix
+ResourcePack=E:\Github\Al-Quran\Al Quran\bin\ARM\Release\Al Quran_1.0.3.0_scale-125.msix
+ResourcePack=E:\Github\Al-Quran\Al Quran\bin\ARM\Release\Al Quran_1.0.3.0_scale-150.msix
+ResourcePack=E:\Github\Al-Quran\Al Quran\bin\ARM\Release\Al Quran_1.0.3.0_scale-400.msix

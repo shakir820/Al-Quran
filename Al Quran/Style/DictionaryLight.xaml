@@ -9,4 +9,41 @@
 
     <SolidColorBrush x:Key="WhiteSoftwareLogoBorderColor"
                      Color="Gray" />
+
+    <SolidColorBrush x:Key="AlQuranSeparatorBorderBrush"
+                     Color="Gray" />
+
+    <SolidColorBrush x:Key="AlQuranOptionForegroundTextMediumBrush"
+                     Color="#575757" />
+
+
+    <SolidColorBrush x:Key="AlQuranElementBackgroundBrush"
+                     Color="#F6F6F6" />
+
+    <SolidColorBrush x:Key="AlQuranBackgroundBrush"
+                     Color="#FFFFFF" />
+
+    <SolidColorBrush x:Key="AlQuranForegroundTextBrush"
+                     Color="#09541B" />
+
+    <SolidColorBrush x:Key="AlQuranForegroundTextBrush2"
+                     Color="#09A82E" />
+
+    <SolidColorBrush x:Key="AlQuranSurahTranslationForegroundTextBrush"
+                     Color="#404040" />
+
+    <SolidColorBrush x:Key="AlQuranAyahSmallTagBackgroundBrush"
+                     Color="#BCBCBC" />
+
+    <SolidColorBrush x:Key="AlQuranAyahSmallTagForegroundBrush"
+                     Color="#F6F6F6" />
+
+    <SolidColorBrush x:Key="AlQuranBismillahForegroundTextBrush"
+                     Color="#404040" />
+
+    <SolidColorBrush x:Key="AlQuranSurahHeaderForegroundTextBrush"
+                     Color="#404040" />
+
+    <SolidColorBrush x:Key="AlQuranSurahNameTranslationForegroundTextBrush"
+                     Color="#BCBCBC" />
 </ResourceDictionary>

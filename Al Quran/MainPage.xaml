@@ -6,24 +6,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:model="using:Al_Quran.Models"
       mc:Ignorable="d"
-      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+      Background="{ThemeResource AlQuranBackgroundBrush}"
       Loaded="Page_Loaded">
 
-
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary Source="ms-appx:///Style/DictionaryLight.xaml"
-                                    x:Key="Light" />
-                <ResourceDictionary Source="ms-appx:///Style/DictionaryDark.xaml"
-                                    x:Key="Dark" />
-            </ResourceDictionary.ThemeDictionaries>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ms-appx:///Style/Style.xaml" />
-                <ResourceDictionary Source="ms-appx:///Style/ConverterDictionary.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>
 
 
 
@@ -33,32 +18,39 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid Background="#F6F6F6"
+        <Grid Background="{ThemeResource AlQuranElementBackgroundBrush}"
               Width="220"
               CornerRadius="0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-           
+
+            <AutoSuggestBox Grid.Row="0"
+                            x:Name="autoSuggestBox"
+                            Margin="10,50,10,0"
+                            QueryIcon="Find"
+                            PlaceholderText="Search"
+                            QuerySubmitted="autoSuggestBox_QuerySubmitted"/>
+
 
             <ListView x:Name="NavigationListView"
-                      Margin="0,150,0,0"
+                      Margin="20,50,0,0"
                       Grid.Row="1"
-                      HorizontalAlignment="Center"
+                      HorizontalAlignment="Left"
                       SelectionChanged="NavigationListView_SelectionChanged"
                       ItemsSource="{x:Bind NavigationItems, Mode=OneWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="model:NavigationItem">
-                        <Grid Background="Transparent"
-                             >
+                        <Grid Background="Transparent">
                             <TextBlock Text="{x:Bind Name, Mode=OneWay}"
                                        Foreground="#09A82E"
                                        FontWeight="{x:Bind IsNavigated, Converter={StaticResource CurrNavigatedItemFontWeightCVT}, Mode=OneWay}"
-                                       FontSize="{x:Bind IsNavigated, Mode=OneWay, Converter={StaticResource CurrNavigatedItemFontSizeCVT}}"/>
+                                       FontSize="{x:Bind IsNavigated, Mode=OneWay, Converter={StaticResource CurrNavigatedItemFontSizeCVT}}" />
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -85,6 +77,105 @@
 
 
             <Grid Grid.Row="2"
+                 
+                  VerticalAlignment="Stretch">
+                <StackPanel Margin="20,120,20,50"
+                            Visibility="Collapsed"
+                            Opacity="0"
+                            VerticalAlignment="Bottom"
+                            x:Name="OptionStackPanel">
+                    <TextBlock Text="Option"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               Foreground="{ThemeResource AlQuranOptionForegroundTextMediumBrush}" />
+                    <Border Height="1"
+                            HorizontalAlignment="Stretch"
+                            Background="{ThemeResource AlQuranSeparatorBorderBrush}"
+                            Margin="0,5,0,0" />
+                    <Grid Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Font Size"
+                                   Foreground="{ThemeResource AlQuranOptionForegroundTextMediumBrush}"
+                                   Margin="0,10,0,0"
+                                   VerticalAlignment="Center" />
+                        <ComboBox Name="FontSizeComboBox"
+                                  Foreground="{ThemeResource AlQuranOptionForegroundTextMediumBrush}"
+                                  Grid.Column="1"
+                                  PlaceholderText="14"
+                                  Background="Transparent"
+                                  FontSize="13"
+                                  Margin="0,10,0,0"
+                                  VerticalAlignment="Center"
+                                  SelectionChanged="FontSizeComboBox_SelectionChanged">
+                            <ComboBoxItem Content="16"
+                                          Tag="16" />
+                            <ComboBoxItem Content="18"
+                                          Tag="18" />
+                            <ComboBoxItem Content="20"
+                                          Tag="20" />
+                            <ComboBoxItem Content="22"
+                                          Tag="22" />
+                            <ComboBoxItem Content="24"
+                                          Tag="24" />
+                            <ComboBoxItem Content="26"
+                                          Tag="26" />
+                            <ComboBoxItem Content="28"
+                                          Tag="28" />
+                            <ComboBoxItem Content="30"
+                                          Tag="30" />
+                        </ComboBox>
+                    </Grid>
+                    <TextBlock Text="Translation Language"
+                               HorizontalAlignment="Left"
+                               Margin="0,15,0,0"
+                               Foreground="{ThemeResource AlQuranOptionForegroundTextMediumBrush}" />
+                    <ComboBox Name="TranslationLanguageComboBox"
+                              Foreground="{ThemeResource AlQuranOptionForegroundTextMediumBrush}"
+                              Grid.Column="1"
+                              SelectionChanged="TranslationLanguageComboBox_SelectionChanged"
+                              Background="Transparent"
+                              FontSize="13"
+                              Margin="0,5,0,0"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Center">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="model:Edition_vm">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{x:Bind Language, Mode=OneWay}"
+                                               VerticalAlignment="Center"
+                                               FontWeight="SemiBold"
+                                               Foreground="{ThemeResource AlQuranOptionForegroundTextMediumBrush}" />
+                                    <TextBlock Text="("
+                                               Grid.Column="1"
+                                               VerticalAlignment="Center"
+                                               Margin="4,0,0,0"
+                                               Foreground="{ThemeResource AlQuranOptionForegroundTextMediumBrush}" />
+                                    <TextBlock Text="{x:Bind Name, Mode=OneWay}"
+                                               VerticalAlignment="Center"
+                                               Grid.Column="2"
+                                               Foreground="{ThemeResource AlQuranOptionForegroundTextMediumBrush}" />
+                                    <TextBlock Text=")"
+                                               Grid.Column="3"
+                                               VerticalAlignment="Center"
+                                               Margin="0"
+                                               Foreground="{ThemeResource AlQuranOptionForegroundTextMediumBrush}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="3"
                   VerticalAlignment="Bottom"
                   HorizontalAlignment="Left"
                   Margin="20">
@@ -115,14 +206,14 @@
                       Background="Transparent"
                       HorizontalAlignment="Right"
                       Name="AboutGrid"
-                      PointerPressed="AboutGrid_PointerPressed" >
+                      PointerPressed="AboutGrid_PointerPressed">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <FontIcon Glyph="&#xEE57;"
                               FontSize="12"
-                              Foreground="Gray"/>
+                              Foreground="Gray" />
                     <TextBlock Text="About"
                                Grid.Column="1"
                                Margin="10,0,0,0"
@@ -136,13 +227,14 @@
         </Grid>
 
 
-        
+
 
         <Frame Grid.Column="1"
                HorizontalAlignment="Stretch"
                VerticalAlignment="Stretch"
                x:Name="frame"
-               Navigated="frame_Navigated">
+               Navigated="frame_Navigated"
+               Background="Transparent">
             <Frame.ContentTransitions>
                 <TransitionCollection>
                     <NavigationThemeTransition />
@@ -166,14 +258,14 @@
                 <ColumnDefinition x:Name="RightPaddingColumn"
                                   Width="0" />
             </Grid.ColumnDefinitions>
-          
+
             <TextBlock Text="Al Quran"
                        Margin="50,0,0,0"
                        FontWeight="SemiBold"
                        Foreground="Gray"
                        FontSize="16"
                        VerticalAlignment="Center"
-                       Grid.Column="1"/>
+                       Grid.Column="1" />
         </Grid>
 
         <Button Name="BackButton"
@@ -185,9 +277,9 @@
                 Height="30"
                 Visibility="Collapsed">
             <FontIcon FontFamily="Segoe MDL2 Assets"
-                      Glyph="&#xE0C4;" 
+                      Glyph="&#xE0C4;"
                       Foreground="Gray"
-                      FontSize="13"/>
+                      FontSize="13" />
         </Button>
     </Grid>
 </Page>

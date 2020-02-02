@@ -6,5 +6,5 @@
 
     <converters:CurrNavigationItemFontSizeConverter x:Key="CurrNavigatedItemFontSizeCVT" />
     <converters:CurrNavigationItemFontWeightConverter x:Key="CurrNavigatedItemFontWeightCVT" />
-
+    <converters:ArabicParagraphLineHeightConverter x:Key="ArabicTextHeightFromFontSizeConverter" />
 </ResourceDictionary>

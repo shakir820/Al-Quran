@@ -20,13 +20,20 @@ namespace Al_Quran.Models
     public class QuranFunctionality: INotifyPropertyChanged
     {
         public static QuranFunctionality Current;
-
         private ObservableCollection<Surah_vm> _suraCollection = new ObservableCollection<Surah_vm>();
         private ObservableCollection<Juz_vm> _juzCollection = new ObservableCollection<Juz_vm>();
         private CoreDispatcher Dispatcher;
-        
+        private FontSizeVM fontSizeVM = new FontSizeVM();
 
 
+
+        public FontSizeVM FontSizeVM
+        {
+            get { return fontSizeVM; }
+            set { fontSizeVM = value; RaisePropertyChanged(); }
+        }
+
+        public string SelectedTranslationIdentifier { get; set; } = null;
 
         public ObservableCollection<Surah_vm> SuraCollection
         {
@@ -63,7 +70,7 @@ namespace Al_Quran.Models
                 FetchSuraListFromServer();
             });
 
-            //Task.Run(CreateSerialization);
+            GetAppSettings();
 
             Task.Run(() =>{ PopulateJuzList(); });
         }
@@ -73,33 +80,23 @@ namespace Al_Quran.Models
 
 
 
-        public void CreateSerialization()
+        public void GetAppSettings()
         {
-            var collection = new JuzDataCollection();
+            var localSettings = ApplicationData.Current.LocalSettings;
 
-            int beginAyahNo = 100;
-            int endAyahNo = 200;
-
-
-            for(var i = 1; i < 6; i++)
+            if (localSettings.Values.ContainsKey("FontSize"))
             {
-                var juzData = new JuzData();
-                juzData.BeginingAyahNo = beginAyahNo;
-                juzData.BeginningSurahAyahNo = i;
-                juzData.EndingAyahNo = i;
-                juzData.EndingSurahAyahNo = endAyahNo;
-                juzData.Title = "Juz" + " " + i.ToString();
-                juzData.Surahs.Add("Juz Surah 1");
-                juzData.Surahs.Add("Juz Surah 2");
-                collection.JuzCollection.Add(juzData);
+                FontSizeVM.FontSize = (int)localSettings.Values["FontSize"];
             }
-
-           
-            DataContractSerializer dcs = new DataContractSerializer(typeof(JuzDataCollection));
-            var localFolder = ApplicationData.Current.LocalFolder;
-            FileStream writer = new FileStream(localFolder.Path + @"\JuzDataCollection.xml", FileMode.Create, FileAccess.Write);
-            dcs.WriteObject(writer, collection);
         }
+
+
+        public void SaveAppSettings()
+        {
+            var localSettings = ApplicationData.Current.LocalSettings;
+            localSettings.Values["FontSize"] = FontSizeVM.FontSize;
+        }
+
 
 
 

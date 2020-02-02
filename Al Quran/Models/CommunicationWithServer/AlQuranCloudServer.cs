@@ -203,11 +203,23 @@ namespace Al_Quran.Models.CommunicationWithServer
                 try
                 {
                     HttpResponseMessage response = await App.client.GetAsync(uri);
+
+                    if(juz.CancelFetchingTranslation == true)
+                    {
+                        return false;
+                    }
+
                     try
                     {
                         response.EnsureSuccessStatusCode();
                         // now serialize data
                         var stringContent = await response.Content.ReadAsStringAsync();
+
+                        if (juz.CancelFetchingTranslation == true)
+                        {
+                            return false;
+                        }
+
                         QuranJaz quran = QuranJaz.FromJson(stringContent);
 
                         if (quran.Status == "OK")
@@ -261,11 +273,23 @@ namespace Al_Quran.Models.CommunicationWithServer
                 try
                 {
                     HttpResponseMessage response = await App.client.GetAsync(uri);
+
+                    if(param_surah.CancelFetchingTranslation == true)
+                    {
+                        return false;
+                    }
+
                     try
                     {
                         response.EnsureSuccessStatusCode();
                         // now serialize data
                         var stringContent = await response.Content.ReadAsStringAsync();
+
+                        if (param_surah.CancelFetchingTranslation == true)
+                        {
+                            return false;
+                        }
+
                         var quranSurah = QuranSurah.FromJson(stringContent);
 
                         if (quranSurah.Status == "OK")
@@ -311,6 +335,58 @@ namespace Al_Quran.Models.CommunicationWithServer
 
 
 
+        public async Task<(bool internetError, List<Edition_vm> editonCollection)> GetEditionsAsync()
+        {
+
+            string uri = "http://api.alquran.cloud/v1/edition/format/text";
+
+            if (CheckForInternetConnection())
+            {
+                try
+                {
+                    HttpResponseMessage response = await App.client.GetAsync(uri);
+                    try
+                    {
+                        response.EnsureSuccessStatusCode();
+                        // now serialize data
+                        var stringContent = await response.Content.ReadAsStringAsync();
+                        var editionData = EditionData.FromJson(stringContent);
+
+                        if (editionData.Status == "OK")
+                        {
+                            if (editionData.Data != null)
+                            {
+
+                                var editions = Helpers.FetchDataHelper.GetEditions(editionData.Data);
+                                
+                                return (false, editions);
+
+                            }
+                            else return (false, null);
+                        }
+                        else
+                        {
+                            return (false, null);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        return (false, null);
+                    }
+                }
+                catch
+                {
+                    //cannot communicate with server. It may have many reasons.
+                    return (false, null);
+                }
+            }
+            else
+            {
+                //ShowInternetErrorNotification();
+                //InternetError?.Invoke(this, new EventArgs());
+                return (true, null);
+            }
+        }
 
 
 

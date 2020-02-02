@@ -3,14 +3,16 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:local="using:Al_Quran.Pages"
       xmlns:models="using:Al_Quran.Models"
+      xmlns:CustomControls="using:Al_Quran.CustomControls"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
-      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-      Loaded="Page_Loaded">
+      Background="Transparent"
+      Loaded="Page_Loaded"
+      Unloaded="Page_Unloaded">
 
 
-    
+
 
     <Grid>
         <Grid.RowDefinitions>
@@ -21,7 +23,7 @@
         <Grid Grid.Row="0"
               Margin="20,30,20,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
@@ -30,22 +32,22 @@
                        FontWeight="SemiBold"
                        FontSize="16"
                        VerticalAlignment="Center"
-                       Foreground="DimGray"
-                       HorizontalAlignment="Left"/>
+                       Foreground="{ThemeResource AlQuranSurahHeaderForegroundTextBrush}"
+                       HorizontalAlignment="Left" />
             <TextBlock Text="بِسْمِ ٱللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ"
                        FontWeight="SemiBold"
                        FontSize="20"
-                       Foreground="DimGray"
+                       Foreground="{ThemeResource AlQuranBismillahForegroundTextBrush}"
                        Grid.Column="1"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
+                       VerticalAlignment="Center" />
             <TextBlock Text="{x:Bind Surah.Name, Mode=OneWay}"
                        Grid.Column="2"
                        FontWeight="SemiBold"
                        VerticalAlignment="Center"
                        FontSize="16"
-                       Foreground="DimGray"
-                       HorizontalAlignment="Right"/>
+                       Foreground="{ThemeResource AlQuranSurahHeaderForegroundTextBrush}"
+                       HorizontalAlignment="Right" />
         </Grid>
 
         <ListView ItemsSource="{x:Bind Surah.Ayahs, Mode=OneWay}"
@@ -57,99 +59,66 @@
                     <Grid CornerRadius="5"
                           Padding="10"
                           Margin="0"
-                          Background="#F6F6F6">
-                        
+                          Background="{ThemeResource AlQuranElementBackgroundBrush}">
+
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <!--<Grid Grid.RowSpan="2">
-                            <Ellipse Stroke="#09A82E"
-                                     StrokeThickness="1"
-                                     Width="30"
-                                     Height="30"
-                                     VerticalAlignment="Center"
-                                     HorizontalAlignment="Center" />
-                            <Grid VerticalAlignment="Center"
-                                  HorizontalAlignment="Center">
+
+                        <!--<TextBlock FontWeight="SemiBold"
+                                   Foreground="{ThemeResource AlQuranForegroundTextBrush}"
+                                   TextWrapping="Wrap"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontSize="16"
+                                   Text="{x:Bind Text, Mode=OneWay}"
+                                   LineHeight="35"
+                                   LineStackingStrategy="BlockLineHeight" 
+                                   Name="AyahArabicTextBlock"/>-->
+
+                        <CustomControls:AyahArabicTextBlockControl ArabicText="{x:Bind Text, Mode=OneWay}"
+                                                                   HorizontalAlignment="Right"
+                                                                   VerticalAlignment="Center" />
+
+                        <TextBlock FontWeight="Normal"
+                                   Foreground="{ThemeResource AlQuranSurahTranslationForegroundTextBrush}"
+                                   Margin="0,10,0,0"
+                                   TextWrapping="Wrap"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Grid.Row="1"
+                                   FontSize="13"
+                                   Text="{x:Bind TranslationText, Mode=OneWay}" />
+
+                        <Grid Grid.Row="2"
+                              Background="Transparent"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch"
+                              Margin="0,10,0,0">
+                            <Grid CornerRadius="10"
+                                  Background="#BCBCBC"
+                                  Padding="10,2,10,2"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Center">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="{x:Bind Surah.Number, Mode=OneWay}"
-                                           VerticalAlignment="Center"
-                                           Foreground="#09A82E"
-                                           HorizontalAlignment="Center"
-                                           FontSize="11" />
-                                <TextBlock Text=":"
-                                           FontSize="11"
-                                           Grid.Column="1"
-                                           Foreground="#09A82E"
-                                           Margin="1,0,1,0"
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Center" />
-                                <TextBlock Text="{x:Bind NumberInSurah, Mode=OneWay}"
-                                           Grid.Column="2"
-                                           FontSize="11"
-                                           Foreground="#09A82E"
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Center" />
-                            </Grid>
-
-                        </Grid>-->
-
-                        <TextBlock FontWeight="SemiBold"
-                                   Foreground="#148C5A"
-                                   TextWrapping="Wrap"
-                                   
-                                   HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                  
-                                   FontSize="16"
-                                   Text="{x:Bind Text, Mode=OneWay}" 
-                                   LineHeight="35"
-                                   LineStackingStrategy="BlockLineHeight"/>
-
-                        <TextBlock FontWeight="Normal"
-                                   Foreground="DimGray"
-                                   Margin="0,10,0,0"
-                                   TextWrapping="Wrap"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   
-                                   Grid.Row="1"
-                                   FontSize="13"
-                                   Text="{x:Bind TranslationText, Mode=OneWay}"
-                                    />
-
-                        <Grid Grid.Row="2" Background="Transparent"
-                              HorizontalAlignment="Stretch"
-                              VerticalAlignment="Stretch"
-                              Margin="0,10,0,0">
-                            <Grid CornerRadius="10"
-                                  Background="DarkGray"
-                                  Padding="10,2,10,2"
-                                  HorizontalAlignment="Left"
-                                  VerticalAlignment="Center">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="{x:Bind Surah.Number, Mode=OneWay}" 
-                                           Foreground="White"
-                                           VerticalAlignment="Center"/>
+                                           Foreground="{ThemeResource AlQuranAyahSmallTagForegroundBrush}"
+                                           VerticalAlignment="Center" />
                                 <TextBlock Text=":"
                                            Margin="2,0,2,0"
                                            VerticalAlignment="Center"
                                            Grid.Column="1"
-                                           Foreground="White" />
+                                           Foreground="{ThemeResource AlQuranAyahSmallTagForegroundBrush}" />
                                 <TextBlock Text="{x:Bind NumberInSurah, Mode=OneWay}"
-                                           Foreground="White"
+                                           Foreground="{ThemeResource AlQuranAyahSmallTagForegroundBrush}"
                                            VerticalAlignment="Center"
-                                           Grid.Column="2"/>
+                                           Grid.Column="2" />
                             </Grid>
                         </Grid>
 

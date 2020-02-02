@@ -10,7 +10,7 @@
     <SplashScreenSource>C:\Users\SHAKIR\OneDrive\Documents\Adobe Illustrator Projects\Al Quran Logo.png</SplashScreenSource>
     <PackageLogoSource>C:\Users\SHAKIR\OneDrive\Documents\Adobe Illustrator Projects\Al Quran Logo.png</PackageLogoSource>
     <UapAppxPackageBuildMode>CI</UapAppxPackageBuildMode>
-    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxShowAllApps>True</AppxShowAllApps>
     <AppxBuildConfigurationSelection>x86|x64|arm</AppxBuildConfigurationSelection>
     <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
   </PropertyGroup>

@@ -367,7 +367,9 @@
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
+    <MainPackageIdentityName>25850SHAKIRAHMED.Dictionary10</MainPackageIdentityName>
     <MainPackageIdentityName>25850SHAKIRAHMED.MusicPlayer10</MainPackageIdentityName>
+    <MainPackageIdentityName>25850SHAKIRAHMED.Youtube10</MainPackageIdentityName>
   </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9PP3HBRZNVVW" />
 </StoreAssociation>

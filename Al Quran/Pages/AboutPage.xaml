@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="Transparent"
     Loaded="Page_Loaded">
 
     <Grid Padding="0,30,0,0">
@@ -38,7 +38,7 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text=" Version: 1.0.1.0" />
+                    <TextBlock Text=" Version: 1.0.3.0" />
                     <Grid Grid.Row="1"
                           Margin="0,40,0,0">
                         <Grid.ColumnDefinitions>
@@ -65,10 +65,10 @@
                     maximum extent possible under the law.
                     </TextBlock>
 
-                    <HyperlinkButton Content="Privacy Policy"
+                    <!--<HyperlinkButton Content="Privacy Policy"
                                      Grid.Row="3"
                                      Click="HyperlinkButton_Click"
-                                     Margin="0,20,0,0" />
+                                     Margin="0,20,0,0" />-->
                     <TextBlock Text="Developed by"
                                Grid.Row="4"
                                FontWeight="SemiBold"

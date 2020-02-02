@@ -43,7 +43,9 @@ namespace Al_Quran.Pages
         {
             this.InitializeComponent();
             QuranFunctionality = QuranFunctionality.Current;
-           
+
+            NavigationCacheMode = NavigationCacheMode.Enabled;
+
         }
 
         private async void QuranFunctionality_SuraListPopulated(object sender, SuraListPopulatedEventArgs e)
@@ -104,6 +106,8 @@ namespace Al_Quran.Pages
                 LoadingProgressBar.IsIndeterminate = false;
                 LoadingGrid.Visibility = Visibility.Collapsed;
             }
+
+            SuraListView.SelectedIndex = -1;
         }
 
         private void TryAgianBtn_Click(object sender, RoutedEventArgs e)
@@ -124,6 +128,11 @@ namespace Al_Quran.Pages
 
         private void SuraListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(SuraListView.SelectedIndex == -1)
+            {
+                return;
+            }
+
             var surah = (Surah_vm)SuraListView.SelectedItem;
             Frame.Navigate(typeof(SurahViewPage), surah);
         }

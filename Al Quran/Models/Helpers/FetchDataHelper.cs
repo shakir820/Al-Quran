@@ -199,5 +199,40 @@ namespace Al_Quran.Models.Helpers
                 }
             }
         }
+
+        public static List<Edition_vm> GetEditions(List<Edition> data)
+        {
+            var editionCollection = new List<Edition_vm>();
+
+            var filteredCollection = data.Where(a => a.Format == "text" && a.Type == "translation").ToList();
+
+            foreach(var edition_item in filteredCollection)
+            {
+                var edition = new Edition_vm();
+                edition.EnglishName = edition_item.EnglishName;
+                edition.Format = edition_item.Format;
+                edition.Identifier = edition_item.Identifier;
+
+                bool LanguageExisted = false;
+
+                if(LanguageDictionary.Languages.ContainsKey(edition_item.Language))
+                {
+                    LanguageExisted = true;
+                    var language = LanguageDictionary.Languages[edition_item.Language];
+                    edition.Language = language;
+                }
+
+                edition.Name = edition_item.Name;
+                edition.Type = edition_item.Type;
+
+                if (LanguageExisted == true)
+                    editionCollection.Add(edition);
+            }
+
+
+            return editionCollection;
+
+
+        }
     }
 }

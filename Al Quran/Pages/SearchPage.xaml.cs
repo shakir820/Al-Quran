@@ -1,10 +1,7 @@
-﻿using Al_Quran.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -15,6 +12,11 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Al_Quran.Models;
+using System.Collections.ObjectModel;
+
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,9 +25,21 @@ namespace Al_Quran.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class JuzListPage : Page, INotifyPropertyChanged
+    public sealed partial class SearchPage : Page, INotifyPropertyChanged
     {
+        public SearchPage()
+        {
+            this.InitializeComponent();
+
+            QuranFunctionality = QuranFunctionality.Current;
+        }
+
+
+
+
         private QuranFunctionality quranFunctionality;
+        private ObservableCollection<Surah_vm> surahCollection = new ObservableCollection<Surah_vm>();
+
 
 
         public QuranFunctionality QuranFunctionality
@@ -34,15 +48,25 @@ namespace Al_Quran.Pages
             set { quranFunctionality = value; RaisePropertyChanged(); }
         }
 
-
-
-        public JuzListPage()
+        public ObservableCollection<Surah_vm> SurahCollection
         {
-            this.InitializeComponent();
-            QuranFunctionality = QuranFunctionality.Current;
-
-            NavigationCacheMode = NavigationCacheMode.Enabled;
+            get { return surahCollection; }
+            set { surahCollection = value; RaisePropertyChanged(); }
         }
+
+
+
+
+
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var listOfSurah = (List<Surah_vm>) e.Parameter;
+
+            SurahCollection = new ObservableCollection<Surah_vm>(listOfSurah);
+        }
+
+
 
 
 
@@ -58,23 +82,10 @@ namespace Al_Quran.Pages
             }
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void SuraListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MainPage.Current.HighlightMenuItem(typeof(JuzListPage));
-
-            JuzListView.SelectedIndex = -1;
-        }
-
-        private void JuzListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if(JuzListView.SelectedIndex == -1)
-            {
-                return;
-            }
-
-
-            var selectedItem = (Juz_vm)JuzListView.SelectedItem;
-            Frame.Navigate(typeof(JuzViewPage), selectedItem);
+            var surah = (Surah_vm)SuraListView.SelectedItem;
+            Frame.Navigate(typeof(SurahViewPage), surah);
         }
     }
 }
